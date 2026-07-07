@@ -23,8 +23,8 @@ describe("ChatBodyEmpty", () => {
 
     render(<ChatBodyEmpty hasContext onSendMessage={onSendMessage} />);
 
-    expect(screen.queryByText("Anarlog AI")).toBeNull();
-    expect(screen.queryByText(/Hi, I'm Anarlog AI/i)).toBeNull();
+    expect(screen.queryByText("Recap AI")).toBeNull();
+    expect(screen.queryByText(/Hi, I'm Recap AI/i)).toBeNull();
 
     const actionItem = screen.getByRole("button", {
       name: "List action items.",

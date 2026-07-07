@@ -31,12 +31,20 @@ msgid "{trialDaysRemaining} days left"
 msgstr "{trialDaysRemaining} days left"
 
 #: src/settings/ai/llm/select.tsx
-msgid "<0>Language model</0> is needed to make Anarlog summarize and chat about your conversations."
-msgstr "<0>Language model</0> is needed to make Anarlog summarize and chat about your conversations."
+#~ msgid "<0>Language model</0> is needed to make Anarlog summarize and chat about your conversations."
+#~ msgstr "<0>Language model</0> is needed to make Anarlog summarize and chat about your conversations."
+
+#: src/settings/ai/llm/select.tsx
+msgid "<0>Language model</0> is needed to make Recap summarize and chat about your conversations."
+msgstr "<0>Language model</0> is needed to make Recap summarize and chat about your conversations."
 
 #: src/settings/ai/stt/select.tsx
-msgid "<0>Transcription model</0> is needed to make Anarlog listen to your conversations."
-msgstr "<0>Transcription model</0> is needed to make Anarlog listen to your conversations."
+#~ msgid "<0>Transcription model</0> is needed to make Anarlog listen to your conversations."
+#~ msgstr "<0>Transcription model</0> is needed to make Anarlog listen to your conversations."
+
+#: src/settings/ai/stt/select.tsx
+msgid "<0>Transcription model</0> is needed to make Recap listen to your conversations."
+msgstr "<0>Transcription model</0> is needed to make Recap listen to your conversations."
 
 #: src/settings/general/storage/index.tsx
 msgid "1 day"
@@ -153,20 +161,20 @@ msgid "Analyzing structure..."
 msgstr "Analyzing structure..."
 
 #: src/onboarding/permissions.tsx
-msgid "Anarlog can hear others"
-msgstr "Anarlog can hear others"
+#~ msgid "Anarlog can hear others"
+#~ msgstr "Anarlog can hear others"
 
 #: src/onboarding/permissions.tsx
-msgid "Anarlog can hear your voice"
-msgstr "Anarlog can hear your voice"
+#~ msgid "Anarlog can hear your voice"
+#~ msgstr "Anarlog can hear your voice"
 
 #: src/onboarding/index.tsx
-msgid "Anarlog needs access to your microphone and system audio to record and transcribe your meetings"
-msgstr "Anarlog needs access to your microphone and system audio to record and transcribe your meetings"
+#~ msgid "Anarlog needs access to your microphone and system audio to record and transcribe your meetings"
+#~ msgstr "Anarlog needs access to your microphone and system audio to record and transcribe your meetings"
 
 #: src/onboarding/index.tsx
-msgid "Anarlog will sync your calendar to get meeting reminders"
-msgstr "Anarlog will sync your calendar to get meeting reminders"
+#~ msgid "Anarlog will sync your calendar to get meeting reminders"
+#~ msgstr "Anarlog will sync your calendar to get meeting reminders"
 
 #: src/settings/ai/shared/index.tsx
 msgid "API Key"
@@ -198,13 +206,17 @@ msgid "Ask & search about anything, or be creative!"
 msgstr "Ask & search about anything, or be creative!"
 
 #: src/shared/chat-cta.tsx
-msgid "Ask Anarlog anything"
-msgstr "Ask Anarlog anything"
+#~ msgid "Ask Anarlog anything"
+#~ msgstr "Ask Anarlog anything"
 
 #: src/chat/components/input/index.tsx
 #: src/shared/chat-cta.tsx
 msgid "Ask anything"
 msgstr "Ask anything"
+
+#: src/shared/chat-cta.tsx
+msgid "Ask Recap anything"
+msgstr "Ask Recap anything"
 
 #: src/task/resource-view.tsx
 msgid "Assignees:"
@@ -216,8 +228,12 @@ msgid "Audio"
 msgstr "Audio"
 
 #: src/instruction/index.tsx
-msgid "Authorize access in your browser, then return to Anarlog."
-msgstr "Authorize access in your browser, then return to Anarlog."
+#~ msgid "Authorize access in your browser, then return to Anarlog."
+#~ msgstr "Authorize access in your browser, then return to Anarlog."
+
+#: src/instruction/index.tsx
+msgid "Authorize access in your browser, then return to Recap."
+msgstr "Authorize access in your browser, then return to Recap."
 
 #: src/settings/general/notification.tsx
 msgid "Automatically detect when a meeting starts based on microphone activity."
@@ -306,8 +322,12 @@ msgid "Choose storage location"
 msgstr "Choose storage location"
 
 #: src/settings/general/storage/index.tsx
-msgid "Choose where Anarlog should store data. (notes, settings, etc)"
-msgstr "Choose where Anarlog should store data. (notes, settings, etc)"
+#~ msgid "Choose where Anarlog should store data. (notes, settings, etc)"
+#~ msgstr "Choose where Anarlog should store data. (notes, settings, etc)"
+
+#: src/settings/general/storage/index.tsx
+msgid "Choose where Recap should store data. (notes, settings, etc)"
+msgstr "Choose where Recap should store data. (notes, settings, etc)"
 
 #: src/contacts/shared.tsx
 #: src/templates/template-sidebar.tsx
@@ -357,12 +377,20 @@ msgid "Compare Free and Pro before you sign in."
 msgstr "Compare Free and Pro before you sign in."
 
 #: src/instruction/index.tsx
-msgid "Complete sign-in in your browser, then return to Anarlog."
-msgstr "Complete sign-in in your browser, then return to Anarlog."
+#~ msgid "Complete sign-in in your browser, then return to Anarlog."
+#~ msgstr "Complete sign-in in your browser, then return to Anarlog."
+
+#: src/instruction/index.tsx
+msgid "Complete sign-in in your browser, then return to Recap."
+msgstr "Complete sign-in in your browser, then return to Recap."
 
 #: src/settings/general/account.tsx
-msgid "Complete the sign-in flow in your browser, then come back here if Anarlog does not reconnect automatically."
-msgstr "Complete the sign-in flow in your browser, then come back here if Anarlog does not reconnect automatically."
+#~ msgid "Complete the sign-in flow in your browser, then come back here if Anarlog does not reconnect automatically."
+#~ msgstr "Complete the sign-in flow in your browser, then come back here if Anarlog does not reconnect automatically."
+
+#: src/settings/general/account.tsx
+msgid "Complete the sign-in flow in your browser, then come back here if Recap does not reconnect automatically."
+msgstr "Complete the sign-in flow in your browser, then come back here if Recap does not reconnect automatically."
 
 #: src/instruction/index.tsx
 msgid "Complete your purchase"
@@ -670,8 +698,12 @@ msgid "Find a note..."
 msgstr "Find a note..."
 
 #: src/instruction/index.tsx
-msgid "Finish checkout in your browser, then return to Anarlog."
-msgstr "Finish checkout in your browser, then return to Anarlog."
+#~ msgid "Finish checkout in your browser, then return to Anarlog."
+#~ msgstr "Finish checkout in your browser, then return to Anarlog."
+
+#: src/instruction/index.tsx
+msgid "Finish checkout in your browser, then return to Recap."
+msgstr "Finish checkout in your browser, then return to Recap."
 
 #: src/settings/general/account.tsx
 msgid "Finish sign-in"
@@ -748,12 +780,20 @@ msgid "Having trouble?"
 msgstr "Having trouble?"
 
 #: src/onboarding/permissions.tsx
-msgid "Help Anarlog listen to others"
-msgstr "Help Anarlog listen to others"
+#~ msgid "Help Anarlog listen to others"
+#~ msgstr "Help Anarlog listen to others"
 
 #: src/onboarding/permissions.tsx
-msgid "Help Anarlog listen to you"
-msgstr "Help Anarlog listen to you"
+#~ msgid "Help Anarlog listen to you"
+#~ msgstr "Help Anarlog listen to you"
+
+#: src/onboarding/permissions.tsx
+msgid "Help Recap listen to others"
+msgstr "Help Recap listen to others"
+
+#: src/onboarding/permissions.tsx
+msgid "Help Recap listen to you"
+msgstr "Help Recap listen to you"
 
 #: src/sidebar/timeline/index.tsx
 msgid "Hide Deleted Events"
@@ -768,8 +808,12 @@ msgid "Human"
 msgstr "Human"
 
 #: src/settings/general/account.tsx
-msgid "If the browser does not reopen Anarlog, use the paste-link fallback in the sign-in instruction window."
-msgstr "If the browser does not reopen Anarlog, use the paste-link fallback in the sign-in instruction window."
+#~ msgid "If the browser does not reopen Anarlog, use the paste-link fallback in the sign-in instruction window."
+#~ msgstr "If the browser does not reopen Anarlog, use the paste-link fallback in the sign-in instruction window."
+
+#: src/settings/general/account.tsx
+msgid "If the browser does not reopen Recap, use the paste-link fallback in the sign-in instruction window."
+msgstr "If the browser does not reopen Recap, use the paste-link fallback in the sign-in instruction window."
 
 #: src/sidebar/timeline/upcoming-meeting.ts
 msgid "In {minutes} minute"
@@ -821,8 +865,12 @@ msgid "Join our community and stay updated:"
 msgstr "Join our community and stay updated:"
 
 #: src/settings/general/app-settings.tsx
-msgid "Keep Anarlog available from the menu bar."
-msgstr "Keep Anarlog available from the menu bar."
+#~ msgid "Keep Anarlog available from the menu bar."
+#~ msgstr "Keep Anarlog available from the menu bar."
+
+#: src/settings/general/app-settings.tsx
+msgid "Keep Recap available from the menu bar."
+msgstr "Keep Recap available from the menu bar."
 
 #: src/settings/general/storage/index.tsx
 msgid "Keep recordings until manually deleted"
@@ -1100,8 +1148,8 @@ msgid "Open {0} settings"
 msgstr "Open {0} settings"
 
 #: src/onboarding/final.tsx
-msgid "Open Anarlog"
-msgstr "Open Anarlog"
+#~ msgid "Open Anarlog"
+#~ msgstr "Open Anarlog"
 
 #: src/sidebar/timeline/index.tsx
 msgid "Open calendar"
@@ -1127,6 +1175,10 @@ msgstr "Open in right panel"
 #: src/task/resource-view.tsx
 msgid "Open on GitHub"
 msgstr "Open on GitHub"
+
+#: src/onboarding/final.tsx
+msgid "Open Recap"
+msgstr "Open Recap"
 
 #: src/settings/todo/github.tsx
 msgid "Open repository on GitHub"
@@ -1165,8 +1217,12 @@ msgid "Participants"
 msgstr "Participants"
 
 #: src/instruction/index.tsx
-msgid "Paste the browser URL here if the browser button did not reopen Anarlog."
-msgstr "Paste the browser URL here if the browser button did not reopen Anarlog."
+#~ msgid "Paste the browser URL here if the browser button did not reopen Anarlog."
+#~ msgstr "Paste the browser URL here if the browser button did not reopen Anarlog."
+
+#: src/instruction/index.tsx
+msgid "Paste the browser URL here if the browser button did not reopen Recap."
+msgstr "Paste the browser URL here if the browser button did not reopen Recap."
 
 #: src/contacts/organization-details.tsx
 #: src/session/components/note-input/transcript/renderer/speaker-assign.tsx
@@ -1223,6 +1279,22 @@ msgstr "Pro trial"
 #: src/onboarding/index.tsx
 msgid "Ready to go"
 msgstr "Ready to go"
+
+#: src/onboarding/permissions.tsx
+msgid "Recap can hear others"
+msgstr "Recap can hear others"
+
+#: src/onboarding/permissions.tsx
+msgid "Recap can hear your voice"
+msgstr "Recap can hear your voice"
+
+#: src/onboarding/index.tsx
+msgid "Recap needs access to your microphone and system audio to record and transcribe your meetings"
+msgstr "Recap needs access to your microphone and system audio to record and transcribe your meetings"
+
+#: src/onboarding/index.tsx
+msgid "Recap will sync your calendar to get meeting reminders"
+msgstr "Recap will sync your calendar to get meeting reminders"
 
 #: src/shared/open-note-dialog.tsx
 msgid "Recent"
@@ -1320,8 +1392,12 @@ msgid "Required to record your voice during meetings and calls"
 msgstr "Required to record your voice during meetings and calls"
 
 #: src/settings/general/permissions.tsx
-msgid "Required to sync Apple Calendar events into Anarlog"
-msgstr "Required to sync Apple Calendar events into Anarlog"
+#~ msgid "Required to sync Apple Calendar events into Anarlog"
+#~ msgstr "Required to sync Apple Calendar events into Anarlog"
+
+#: src/settings/general/permissions.tsx
+msgid "Required to sync Apple Calendar events into Recap"
+msgstr "Required to sync Apple Calendar events into Recap"
 
 #: src/calendar/components/apple/permission.tsx
 #: src/settings/general/permissions.tsx
@@ -1451,8 +1527,12 @@ msgid "Select..."
 msgstr "Select..."
 
 #: src/settings/general/app-settings.tsx
-msgid "Send anonymous usage analytics to help improve Anarlog."
-msgstr "Send anonymous usage analytics to help improve Anarlog."
+#~ msgid "Send anonymous usage analytics to help improve Anarlog."
+#~ msgstr "Send anonymous usage analytics to help improve Anarlog."
+
+#: src/settings/general/app-settings.tsx
+msgid "Send anonymous usage analytics to help improve Recap."
+msgstr "Send anonymous usage analytics to help improve Recap."
 
 #: src/contacts/organization-details.tsx
 msgid "Send email"
@@ -1488,8 +1568,8 @@ msgid "Show All Recurring Events"
 msgstr "Show All Recurring Events"
 
 #: src/settings/general/app-settings.tsx
-msgid "Show Anarlog in the Dock and app switcher."
-msgstr "Show Anarlog in the Dock and app switcher."
+#~ msgid "Show Anarlog in the Dock and app switcher."
+#~ msgstr "Show Anarlog in the Dock and app switcher."
 
 #: src/settings/general/app-settings.tsx
 msgid "Show app in Dock"
@@ -1511,6 +1591,10 @@ msgstr "Show floating bar"
 #: src/sidebar/timeline/item.tsx
 msgid "Show in Finder"
 msgstr "Show in Finder"
+
+#: src/settings/general/app-settings.tsx
+msgid "Show Recap in the Dock and app switcher."
+msgstr "Show Recap in the Dock and app switcher."
 
 #: src/settings/general/app-settings.tsx
 msgid "Show the compact floating control while listening."
@@ -1537,8 +1621,8 @@ msgid "Sign in for Pro"
 msgstr "Sign in for Pro"
 
 #: src/settings/general/account.tsx
-msgid "Sign in to Anarlog"
-msgstr "Sign in to Anarlog"
+#~ msgid "Sign in to Anarlog"
+#~ msgstr "Sign in to Anarlog"
 
 #: src/onboarding/calendar.tsx
 msgid "Sign in to connect"
@@ -1548,6 +1632,10 @@ msgstr "Sign in to connect"
 #: src/settings/todo/provider-content.tsx
 msgid "Sign in to connect {0}"
 msgstr "Sign in to connect {0}"
+
+#: src/settings/general/account.tsx
+msgid "Sign in to Recap"
+msgstr "Sign in to Recap"
 
 #: src/settings/general/account.tsx
 msgid "Sign in to unlock cloud transcription and AI models, plus Pro features like sharing."
@@ -1596,8 +1684,12 @@ msgid "Sort options"
 msgstr "Sort options"
 
 #: src/settings/general/app-settings.tsx
-msgid "Start Anarlog at login"
-msgstr "Start Anarlog at login"
+#~ msgid "Start Anarlog at login"
+#~ msgstr "Start Anarlog at login"
+
+#: src/settings/general/app-settings.tsx
+msgid "Start Recap at login"
+msgstr "Start Recap at login"
 
 #: src/main/empty.tsx
 msgid "Start Recording"
@@ -1713,8 +1805,12 @@ msgid "Timezone"
 msgstr "Timezone"
 
 #: src/session/components/note-input/enhanced/streaming.tsx
-msgid "Tip: The Anarlog team loves our users!"
-msgstr "Tip: The Anarlog team loves our users!"
+#~ msgid "Tip: The Anarlog team loves our users!"
+#~ msgstr "Tip: The Anarlog team loves our users!"
+
+#: src/session/components/note-input/enhanced/streaming.tsx
+msgid "Tip: The Recap team loves our users!"
+msgstr "Tip: The Recap team loves our users!"
 
 #: src/session/components/note-input/header.tsx
 #: src/session/components/outer-header/overflow/export-modal.tsx
@@ -1809,8 +1905,12 @@ msgid "Week starts on"
 msgstr "Week starts on"
 
 #: src/onboarding/index.tsx
-msgid "Welcome to Anarlog"
-msgstr "Welcome to Anarlog"
+#~ msgid "Welcome to Anarlog"
+#~ msgstr "Welcome to Anarlog"
+
+#: src/onboarding/index.tsx
+msgid "Welcome to Recap"
+msgstr "Welcome to Recap"
 
 #: src/changelog/index.tsx
 msgid "What's new in {version}?"
@@ -1854,8 +1954,12 @@ msgid "You need to select a model to summarize this meeting"
 msgstr "You need to select a model to summarize this meeting"
 
 #: src/session/components/note-input/enhanced/config-error.tsx
-msgid "You need to sign in to use Anarlog's language model"
-msgstr "You need to sign in to use Anarlog's language model"
+#~ msgid "You need to sign in to use Anarlog's language model"
+#~ msgstr "You need to sign in to use Anarlog's language model"
+
+#: src/session/components/note-input/enhanced/config-error.tsx
+msgid "You need to sign in to use Recap's language model"
+msgstr "You need to sign in to use Recap's language model"
 
 #: src/onboarding/account/after-login.tsx
 msgid "You're on a Pro trial"
@@ -1870,8 +1974,12 @@ msgid "Your Account"
 msgstr "Your Account"
 
 #: src/session/components/note-input/enhanced/config-error.tsx
-msgid "Your Anarlog plan has expired. Configure another language model or renew your plan"
-msgstr "Your Anarlog plan has expired. Configure another language model or renew your plan"
+#~ msgid "Your Anarlog plan has expired. Configure another language model or renew your plan"
+#~ msgstr "Your Anarlog plan has expired. Configure another language model or renew your plan"
+
+#: src/session/components/note-input/enhanced/config-error.tsx
+msgid "Your Recap plan has expired. Configure another language model or renew your plan"
+msgstr "Your Recap plan has expired. Configure another language model or renew your plan"
 
 #: src/templates/template-sidebar.tsx
 msgid "Z to A"

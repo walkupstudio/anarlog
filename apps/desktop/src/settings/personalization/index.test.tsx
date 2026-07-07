@@ -57,7 +57,7 @@ describe("DictionarySettings", () => {
 
   it("adds entered terms and keeps them normalized", async () => {
     const onSave = vi.fn();
-    render(<DictionarySettings terms={["Anarlog"]} onSave={onSave} />);
+    render(<DictionarySettings terms={["Recap"]} onSave={onSave} />);
 
     fireEvent.change(screen.getByRole("textbox"), {
       target: { value: " FastConformer, Parakeet TDT " },
@@ -70,7 +70,7 @@ describe("DictionarySettings", () => {
 
     await waitFor(() =>
       expect(onSave).toHaveBeenCalledWith(
-        JSON.stringify(["Anarlog", "FastConformer", "Parakeet TDT"]),
+        JSON.stringify(["Recap", "FastConformer", "Parakeet TDT"]),
       ),
     );
   });
@@ -79,22 +79,22 @@ describe("DictionarySettings", () => {
     const onSave = vi.fn();
     render(
       <DictionarySettings
-        terms={["Anarlog", "Parakeet TDT"]}
+        terms={["Recap", "Parakeet TDT"]}
         onSave={onSave}
       />,
     );
 
-    fireEvent.click(screen.getByRole("button", { name: "Remove Anarlog" }));
+    fireEvent.click(screen.getByRole("button", { name: "Remove Recap" }));
 
     expect(onSave).toHaveBeenCalledWith(JSON.stringify(["Parakeet TDT"]));
   });
 
   it("does not enable adding duplicate terms", async () => {
     const onSave = vi.fn();
-    render(<DictionarySettings terms={["Anarlog"]} onSave={onSave} />);
+    render(<DictionarySettings terms={["Recap"]} onSave={onSave} />);
 
     fireEvent.change(screen.getByRole("textbox"), {
-      target: { value: "anarlog" },
+      target: { value: "recap" },
     });
 
     const addButton = screen.getByRole("button", {
@@ -109,7 +109,7 @@ describe("DictionarySettings", () => {
   it("shows relevant saved terms while typing", async () => {
     render(
       <DictionarySettings
-        terms={["Anarlog", "FastConformer", "Parakeet TDT"]}
+        terms={["Recap", "FastConformer", "Parakeet TDT"]}
         onSave={vi.fn()}
       />,
     );
@@ -119,7 +119,7 @@ describe("DictionarySettings", () => {
     });
 
     await waitFor(() => expect(screen.getByText("FastConformer")).toBeTruthy());
-    expect(screen.queryByText("Anarlog")).toBeNull();
+    expect(screen.queryByText("Recap")).toBeNull();
     expect(screen.queryByText("Parakeet TDT")).toBeNull();
   });
 });

@@ -185,7 +185,7 @@ export function SelectProviderAndModel() {
         <SettingsAlert>
           <Trans>
             <strong className="font-medium">Language model</strong> is needed to
-            make Anarlog summarize and chat about your conversations.
+            make Recap summarize and chat about your conversations.
           </Trans>
         </SettingsAlert>
       )}

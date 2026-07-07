@@ -12,7 +12,7 @@ import type { ReactNode } from "react";
 import type { LocalModel } from "@hypr/plugin-local-stt";
 
 import { env } from "~/env";
-import { AnarlogProviderIcon, ProviderBrandImage } from "~/settings/ai/shared";
+import { RecapProviderIcon, ProviderBrandImage } from "~/settings/ai/shared";
 import { type ProviderRequirement } from "~/settings/ai/shared/eligibility";
 import { sortProviders } from "~/settings/ai/shared/sort-providers";
 import { localSttQueries } from "~/stt/useLocalSttModel";
@@ -170,9 +170,9 @@ const _PROVIDERS = [
   {
     disabled: false,
     id: "hyprnote",
-    displayName: "Anarlog",
+    displayName: "Recap",
     badge: "Recommended",
-    icon: <AnarlogProviderIcon />,
+    icon: <RecapProviderIcon />,
     baseUrl: new URL("/stt", env.VITE_API_URL).toString(),
     models: ["cloud"],
     requirements: [],

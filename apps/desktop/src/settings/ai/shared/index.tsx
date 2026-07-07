@@ -56,11 +56,11 @@ type ProviderConfig = {
 
 const ANARLOG_ICON_SRC = "/assets/anarlog-icon.png";
 
-export function AnarlogProviderIcon() {
+export function RecapProviderIcon() {
   return (
     <img
       src={ANARLOG_ICON_SRC}
-      alt="Anarlog"
+      alt="Recap"
       data-slot="provider-logo"
       className="size-4 object-contain object-center [clip-path:inset(6%_round_18%)]"
     />

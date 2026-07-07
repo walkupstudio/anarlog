@@ -42,7 +42,7 @@ vi.mock("./listen", () => ({
 vi.mock("~/shared/chat-cta", () => ({
   ChatCTA: () => (
     <button type="button" onClick={() => hoisted.sendEvent({ type: "OPEN" })}>
-      Ask Anarlog anything
+      Ask Recap anything
     </button>
   ),
 }));
@@ -183,7 +183,7 @@ describe("FloatingActionButton", () => {
     renderFloatingActionButton();
 
     expect(
-      screen.queryByRole("button", { name: "Ask Anarlog anything" }),
+      screen.queryByRole("button", { name: "Ask Recap anything" }),
     ).not.toBeNull();
   });
 
@@ -193,7 +193,7 @@ describe("FloatingActionButton", () => {
     renderFloatingActionButton();
 
     expect(
-      screen.queryByRole("button", { name: "Ask Anarlog anything" }),
+      screen.queryByRole("button", { name: "Ask Recap anything" }),
     ).not.toBeNull();
     expect(
       screen.queryByRole("button", { name: "Regenerate summary" }),
@@ -212,7 +212,7 @@ describe("FloatingActionButton", () => {
     renderFloatingActionButton();
 
     expect(
-      screen.queryByRole("button", { name: "Ask Anarlog anything" }),
+      screen.queryByRole("button", { name: "Ask Recap anything" }),
     ).toBeNull();
 
     fireEvent.click(screen.getByRole("button", { name: "Generate summary" }));
@@ -234,7 +234,7 @@ describe("FloatingActionButton", () => {
     renderFloatingActionButton();
 
     expect(
-      screen.queryByRole("button", { name: "Ask Anarlog anything" }),
+      screen.queryByRole("button", { name: "Ask Recap anything" }),
     ).toBeNull();
     expect(
       screen.getByRole("button", { name: "Generate summary" }),
@@ -248,7 +248,7 @@ describe("FloatingActionButton", () => {
     renderFloatingActionButton();
 
     expect(
-      screen.queryByRole("button", { name: "Ask Anarlog anything" }),
+      screen.queryByRole("button", { name: "Ask Recap anything" }),
     ).toBeNull();
   });
 
@@ -261,7 +261,7 @@ describe("FloatingActionButton", () => {
     renderFloatingActionButton();
 
     expect(
-      screen.queryByRole("button", { name: "Ask Anarlog anything" }),
+      screen.queryByRole("button", { name: "Ask Recap anything" }),
     ).toBeNull();
   });
 
@@ -274,7 +274,7 @@ describe("FloatingActionButton", () => {
     renderFloatingActionButton();
 
     expect(
-      screen.queryByRole("button", { name: "Ask Anarlog anything" }),
+      screen.queryByRole("button", { name: "Ask Recap anything" }),
     ).toBeNull();
     expect(screen.queryByRole("button", { name: "Stop summary" })).toBeNull();
   });
@@ -284,7 +284,7 @@ describe("FloatingActionButton", () => {
 
     renderFloatingActionButton();
 
-    const wrapper = screen.getByText("Ask Anarlog anything").parentElement;
+    const wrapper = screen.getByText("Ask Recap anything").parentElement;
     const hoverZone = wrapper?.parentElement;
 
     expect(hoverZone?.className).toContain("pointer-events-none");
@@ -306,7 +306,7 @@ describe("FloatingActionButton", () => {
 
     renderFloatingActionButton();
 
-    const wrapper = screen.getByText("Ask Anarlog anything").parentElement;
+    const wrapper = screen.getByText("Ask Recap anything").parentElement;
     const hoverZone = wrapper?.parentElement;
 
     expect(hoverZone?.className).toContain("pointer-events-none");
@@ -330,7 +330,7 @@ describe("FloatingActionButton", () => {
 
     renderFloatingActionButton();
 
-    const wrapper = screen.getByText("Ask Anarlog anything").parentElement;
+    const wrapper = screen.getByText("Ask Recap anything").parentElement;
 
     expect(
       screen.queryByRole("button", { name: "Start listening" }),
@@ -347,7 +347,7 @@ describe("FloatingActionButton", () => {
     renderFloatingActionButton();
 
     fireEvent.click(
-      screen.getByRole("button", { name: "Ask Anarlog anything" }),
+      screen.getByRole("button", { name: "Ask Recap anything" }),
     );
 
     expect(hoisted.sendEvent).toHaveBeenCalledWith({ type: "OPEN" });
@@ -384,7 +384,7 @@ describe("FloatingActionButton", () => {
     renderFloatingActionButton({ audioExists: true });
 
     expect(
-      screen.queryByRole("button", { name: "Ask Anarlog anything" }),
+      screen.queryByRole("button", { name: "Ask Recap anything" }),
     ).toBeNull();
 
     fireEvent.click(
@@ -401,7 +401,7 @@ describe("FloatingActionButton", () => {
     renderFloatingActionButton({ audioExists: true });
 
     expect(
-      screen.queryByRole("button", { name: "Ask Anarlog anything" }),
+      screen.queryByRole("button", { name: "Ask Recap anything" }),
     ).toBeNull();
 
     fireEvent.click(
@@ -444,7 +444,7 @@ describe("FloatingActionButton", () => {
     expect(status.className).toContain("text-red-400");
     expect(status.parentElement?.className).toContain("pb-4");
     expect(
-      screen.queryByRole("button", { name: "Ask Anarlog anything" }),
+      screen.queryByRole("button", { name: "Ask Recap anything" }),
     ).toBeNull();
   });
 

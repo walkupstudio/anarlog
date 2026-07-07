@@ -99,7 +99,7 @@ export function ComposerScreen() {
               }
               onStop={sessionProps.stop}
               onSendMessage={sendMessage}
-              title={currentTitle || "Ask Anarlog AI anything"}
+              title={currentTitle || "Ask Recap AI anything"}
             />
           ) : (
             <ComposerSettingsCard />
@@ -224,7 +224,7 @@ function ComposerInput({
             ])}
           >
             <ArrowUpRightIcon className="size-3.5" />
-            Open Anarlog
+            Open Recap
           </button>
           <button
             type="button"
@@ -304,7 +304,7 @@ function ComposerInput({
 
 const composerPlaceholder: PlaceholderFunction = ({ node, pos }) => {
   if (node.type.name === "paragraph" && pos === 0) {
-    return "Message Anarlog AI";
+    return "Message Recap AI";
   }
 
   return "";
