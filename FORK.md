@@ -25,6 +25,33 @@ structured summary pipeline. Spec and plan live in the sibling
 - crates/detect/src/list/mod.rs                                             (self-app bundle id/name/path entries)
 - plugins/detect/src/policy.rs                                              (Hyprnote category bundle id)
 
+## Phase A (Recap rebrand)
+
+Following the rebrand initiative, the following additional files were modified in Tasks A1–A5:
+
+- apps/desktop/src/onboarding/config.tsx                                     (LOCAL_ONLY fork flag)
+- apps/desktop/src/onboarding/index.tsx                                      (LOCAL_ONLY fork flag)
+- apps/desktop/src/sidebar/settings.tsx                                      (hide account nav item)
+- apps/desktop/src/settings/ai/shared/hypr-cloud-button.tsx                 (hide cloud CTA button)
+- apps/desktop/src/settings/ai/llm/select.tsx                                (filter pro provider)
+- apps/desktop/src/settings/ai/stt/select.tsx                                (filter cloud model)
+- apps/desktop/src/sidebar/toast/registry.tsx                                (hide pro/account upsell toasts)
+- apps/desktop/src/calendar/components/sidebar.tsx                           (hide upgrade button)
+- apps/desktop/src/sidebar/settings.test.tsx                                 (test updates)
+- apps/desktop/src/sidebar/toast/registry.test.tsx                           (test updates)
+- apps/desktop/src/sidebar/toast/index.test.tsx                              (test updates)
+- scripts/rebrand.mjs                                                         (idempotent rebranding script)
+- all display strings in apps/desktop/src/**/* via `node scripts/rebrand.mjs`
+- apps/desktop/src-tauri/tauri.conf.json                                     (product name, identifier, icons)
+- apps/desktop/src-tauri/icons/recap/                                        (56 placeholder icon files)
+- plugins/analytics/src/lib.rs                                               (hard-disable PostHog)
+
+**Identifier change:** `studio.walkup.recap` (formerly `com.hyprnote.dev`) — expects a fresh app-data directory on first launch; old dev data under the former identifier is abandoned.
+
+## Amended merge policy
+
+**Rust/core tracks upstream** — only `apps/desktop/src` + `packages/ui` are fork-owned; merge conflicts in core/plugin Rust are resolved upstream-first. **Display-string conflicts** → take upstream then re-run `node scripts/rebrand.mjs`; **restyled-screen conflicts** → resolve in Recap's favor.
+
 ## Merging upstream
 
     git fetch upstream
