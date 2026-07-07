@@ -10,14 +10,14 @@ structured summary pipeline. Spec and plan live in the sibling
 
 ## Modified upstream files
 
-- `apps/desktop/src/main/lifecycle.tsx` — seeds fork templates on startup (1 line + import)
-- `apps/desktop/src/store/zustand/ai-task/task-configs/index.ts` — enhance arg types gain `mode`/`sessionId`
-- `apps/desktop/src/store/zustand/ai-task/task-configs/enhance-transform.ts` — passes `sessionId`/`mode` through
-- `apps/desktop/src/store/zustand/ai-task/task-configs/enhance-workflow.ts` — 4-line branch into `~/summary/workflow`
-- `apps/desktop/src/ai/task-window-sync.tsx` — `TaskEnhancePayload.opts` gains `mode`
-- `apps/desktop/src/services/enhancer/index.ts` — `EnhanceOpts` gains `mode`, forwarded into generate args
-- `apps/desktop/src/session/components/note-input/enhanced-actions.ts` — `onRegenerate` takes an `opts.mode` param, threaded through both dispatch paths
-- `apps/desktop/src/session/components/note-input/header.tsx` — adds "Summarize from transcript" context-menu item to `HeaderViewEnhancedActive`
+- apps/desktop/src/main/lifecycle.tsx                                        (template seeding, 1 line + import)
+- apps/desktop/src/store/zustand/ai-task/task-configs/index.ts               (enhance arg types)
+- apps/desktop/src/store/zustand/ai-task/task-configs/enhance-transform.ts   (sessionId/mode pass-through)
+- apps/desktop/src/store/zustand/ai-task/task-configs/enhance-workflow.ts    (mode branch)
+- apps/desktop/src/ai/task-window-sync.tsx                                   (mode in enhance payload)
+- apps/desktop/src/services/enhancer/index.ts                                (mode in EnhanceOpts)
+- apps/desktop/src/session/components/note-input/enhanced-actions.ts         (mode in onRegenerate)
+- apps/desktop/src/session/components/note-input/header.tsx                  (context-menu item)
 
 ## Merging upstream
 
