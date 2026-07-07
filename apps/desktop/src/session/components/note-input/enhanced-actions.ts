@@ -40,7 +40,7 @@ export function useEnhancedNoteActions({
   const enhanceTask = useAITaskTask(taskId, "enhance");
 
   const onRegenerate = useCallback(
-    async (templateId: string | null) => {
+    async (templateId: string | null, opts?: { mode?: "transcript-first" }) => {
       if (!enhancedNoteId) {
         return;
       }
@@ -58,6 +58,7 @@ export function useEnhancedNoteActions({
         void requestMainEnhance(sessionId, {
           templateId: templateId ?? noteTemplateId,
           targetNoteId: enhancedNoteId,
+          mode: opts?.mode,
         });
         return;
       }
@@ -73,6 +74,7 @@ export function useEnhancedNoteActions({
           sessionId,
           enhancedNoteId,
           templateId: templateId ?? noteTemplateId,
+          mode: opts?.mode,
         },
       });
     },

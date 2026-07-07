@@ -32,6 +32,7 @@ type TaskEnhancePayload = {
     templateId?: string | null;
     targetNoteId?: string;
     templateTitle?: string;
+    mode?: "transcript-first";
   };
 };
 

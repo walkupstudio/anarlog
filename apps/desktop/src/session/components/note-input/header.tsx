@@ -483,6 +483,9 @@ function HeaderViewEnhancedActive({
   const handleRegenerate = useCallback(() => {
     void onRegenerate(null);
   }, [onRegenerate]);
+  const handleTranscriptSummary = useCallback(() => {
+    void onRegenerate(null, { mode: "transcript-first" });
+  }, [onRegenerate]);
   const handleSelectTemplate = useCallback(
     (selection: TemplateSelection) => {
       if (isGenerating) {
@@ -520,6 +523,12 @@ function HeaderViewEnhancedActive({
         action: handleRegenerate,
         disabled: isGenerating,
       },
+      {
+        id: `transcript-summary-${enhancedNoteId}`,
+        text: "Summarize from transcript",
+        action: handleTranscriptSummary,
+        disabled: isGenerating,
+      },
     ];
 
     if (canRemove) {
@@ -540,6 +549,7 @@ function HeaderViewEnhancedActive({
     enhancedNoteId,
     handleCopy,
     handleRegenerate,
+    handleTranscriptSummary,
     isGenerating,
     noteMarkdown.length,
     onRemove,

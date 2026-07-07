@@ -25,6 +25,7 @@ type EnhanceOpts = {
   templateId?: string | null;
   targetNoteId?: string;
   templateTitle?: string;
+  mode?: "transcript-first";
 };
 
 type EnhancerEvent =
@@ -311,7 +312,7 @@ export class EnhancerService {
     void aiTaskStore.getState().generate(enhanceTaskId, {
       model,
       taskType: "enhance",
-      args: { sessionId, enhancedNoteId, templateId },
+      args: { sessionId, enhancedNoteId, templateId, mode: opts?.mode },
     });
 
     return { type: "started", noteId: enhancedNoteId };

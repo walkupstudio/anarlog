@@ -14,6 +14,10 @@ structured summary pipeline. Spec and plan live in the sibling
 - `apps/desktop/src/store/zustand/ai-task/task-configs/index.ts` — enhance arg types gain `mode`/`sessionId`
 - `apps/desktop/src/store/zustand/ai-task/task-configs/enhance-transform.ts` — passes `sessionId`/`mode` through
 - `apps/desktop/src/store/zustand/ai-task/task-configs/enhance-workflow.ts` — 4-line branch into `~/summary/workflow`
+- `apps/desktop/src/ai/task-window-sync.tsx` — `TaskEnhancePayload.opts` gains `mode`
+- `apps/desktop/src/services/enhancer/index.ts` — `EnhanceOpts` gains `mode`, forwarded into generate args
+- `apps/desktop/src/session/components/note-input/enhanced-actions.ts` — `onRegenerate` takes an `opts.mode` param, threaded through both dispatch paths
+- `apps/desktop/src/session/components/note-input/header.tsx` — adds "Summarize from transcript" context-menu item to `HeaderViewEnhancedActive`
 
 ## Merging upstream
 
