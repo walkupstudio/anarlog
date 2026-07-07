@@ -10,7 +10,7 @@ structured summary pipeline. Spec and plan live in the sibling
 
 ## Modified upstream files
 
-(filled in as tasks land; keep this list exact)
+- `apps/desktop/src/main/lifecycle.tsx` — seeds fork templates on startup (1 line + import)
 
 ## Merging upstream
 

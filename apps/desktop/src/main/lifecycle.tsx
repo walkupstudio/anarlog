@@ -8,6 +8,7 @@ import { buildChatTools } from "~/chat/tools";
 import { useRegisterTools } from "~/contexts/tool";
 import { useSearchEngine } from "~/search/contexts/engine";
 import { initEnhancerService } from "~/services/enhancer";
+import { seedStructuredSummaryTemplates } from "~/summary/templates";
 import { getSessionEvent } from "~/session/utils";
 import { useDesktopTabLifecycle } from "~/shared/desktop-tab-lifecycle";
 import * as main from "~/store/tinybase/store/main";
@@ -309,6 +310,8 @@ function EnhancerInit() {
       getLLMConn: () => llmConnRef.current,
       getSelectedTemplateId: () => templateIdRef.current || undefined,
     });
+
+    void seedStructuredSummaryTemplates();
 
     return () => service.dispose();
   }, [persistedStore, aiTaskStore, indexes]);
