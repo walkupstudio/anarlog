@@ -11,6 +11,9 @@ structured summary pipeline. Spec and plan live in the sibling
 ## Modified upstream files
 
 - `apps/desktop/src/main/lifecycle.tsx` — seeds fork templates on startup (1 line + import)
+- `apps/desktop/src/store/zustand/ai-task/task-configs/index.ts` — enhance arg types gain `mode`/`sessionId`
+- `apps/desktop/src/store/zustand/ai-task/task-configs/enhance-transform.ts` — passes `sessionId`/`mode` through
+- `apps/desktop/src/store/zustand/ai-task/task-configs/enhance-workflow.ts` — 4-line branch into `~/summary/workflow`
 
 ## Merging upstream
 

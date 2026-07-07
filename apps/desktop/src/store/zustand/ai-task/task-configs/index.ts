@@ -23,7 +23,12 @@ import type { TaskState, TaskStepInfo } from "~/store/zustand/ai-task/tasks";
 export type TaskType = "enhance" | "title";
 
 export interface TaskArgsMap {
-  enhance: { sessionId: string; enhancedNoteId: string; templateId?: string };
+  enhance: {
+    sessionId: string;
+    enhancedNoteId: string;
+    templateId?: string;
+    mode?: "transcript-first";
+  };
   title: {
     sessionId: string;
     enhancedNote?: string;
@@ -35,6 +40,8 @@ export interface TaskArgsMapTransformed {
   enhance: EnhanceSystem &
     EnhanceUser & {
       imageContext: EnhanceImageContext[];
+      sessionId?: string;
+      mode?: "transcript-first";
     };
   title: TitleSystem & TitleUser;
 }

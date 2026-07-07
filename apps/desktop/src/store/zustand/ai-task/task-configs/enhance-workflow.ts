@@ -23,6 +23,7 @@ import { deterministicGenerationSettings } from "~/ai/model-settings";
 import type { Store } from "~/store/tinybase/store/main";
 import { normalizeBulletPoints } from "~/store/zustand/ai-task/shared/transform_impl";
 import { withEarlyValidationRetry } from "~/store/zustand/ai-task/shared/validate";
+import { structuredSummaryWorkflow } from "~/summary/workflow";
 import { assertCanonicalTemplateSections } from "~/templates/codec";
 
 const AI_GENERATION_MAX_RETRIES = 4;
@@ -50,6 +51,17 @@ async function* executeWorkflow(params: {
   store: Store;
 }) {
   const { model, args, onProgress, signal, store } = params;
+
+  if (args.mode === "transcript-first") {
+    yield* structuredSummaryWorkflow({
+      model,
+      args,
+      onProgress,
+      signal,
+      store,
+    });
+    return;
+  }
 
   const sections = await generateTemplateIfNeeded({
     model,
