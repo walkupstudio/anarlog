@@ -38,11 +38,43 @@ for (const file of walk(TARGET_DIR)) {
     .split("\n")
     .map((line, i) => {
       if (!line.includes(BRAND_FROM)) return line;
-      // Refuse to rewrite structural code references.
-      if (/^\s*(import|export)\b.*\bfrom\b/.test(line) || /require\(/.test(line)) {
-        errors.push(`${file}:${i + 1}: "${BRAND_FROM}" in an import/require line`);
-        return line;
+
+      const isImportLine =
+        /^\s*(import|export)\b.*\bfrom\b/.test(line) || /require\(/.test(line);
+
+      if (isImportLine) {
+        // Split on quoted strings: odd indices are quoted, even are unquoted.
+        // Rename only in unquoted segments (identifiers), refuse if found in quotes (paths).
+        const segments = line.split(/("[^"]*"|'[^']*')/);
+        let refused = false;
+
+        const transformed = segments
+          .map((seg, idx) => {
+            const isQuoted = idx % 2 === 1;
+            if (isQuoted) {
+              // Check if module path contains BRAND_FROM
+              if (seg.includes(BRAND_FROM)) {
+                refused = true;
+              }
+              return seg; // Don't transform quoted strings
+            }
+            // Transform unquoted segments (identifiers, keywords, etc.)
+            return seg.replaceAll(BRAND_FROM, BRAND_TO);
+          })
+          .join("");
+
+        if (refused) {
+          errors.push(`${file}:${i + 1}: "${BRAND_FROM}" in an import/require path`);
+          return line;
+        }
+
+        if (CHECK && transformed !== line) {
+          remaining++;
+        }
+        return CHECK ? line : transformed;
       }
+
+      // Non-import lines: transform normally.
       remaining += CHECK ? 1 : 0;
       return CHECK ? line : line.replaceAll(BRAND_FROM, BRAND_TO);
     })
