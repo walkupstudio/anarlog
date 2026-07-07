@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Anarlog Dev",
+  "productName": "Recap",
   "mainBinaryName": "anarlog-dev",
-  "identifier": "com.hyprnote.dev",
+  "identifier": "studio.walkup.recap",
   "build": {
     "beforeDevCommand": "pnpm -F desktop dev",
     "devUrl": "http://localhost:1422",
@@ -30,16 +30,16 @@
     "targets": "all",
     "externalBin": [],
     "icon": [
-      "icons/stable/32x32.png",
-      "icons/stable/128x128.png",
-      "icons/stable/128x128@2x.png",
-      "icons/stable/icon.icns",
-      "icons/stable/icon.ico"
+      "icons/recap/32x32.png",
+      "icons/recap/128x128.png",
+      "icons/recap/128x128@2x.png",
+      "icons/recap/icon.icns",
+      "icons/recap/icon.ico"
     ],
     "resources": {
       "../../../plugins/windows/swift-lib/src/Resources/CabinSketch-Regular.ttf": "CabinSketch-Regular.ttf",
       "../../../plugins/windows/swift-lib/src/Resources/OFL.txt": "CabinSketch-OFL.txt",
-      "icons/stable/icon.icns": "icons/stable.icns",
+      "icons/recap/icon.icns": "icons/recap.icns",
       "resources/notification-icons": "notification-icons"
     },
     "macOS": {
