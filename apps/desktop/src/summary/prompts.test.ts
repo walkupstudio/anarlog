@@ -32,22 +32,24 @@ describe("buildCombinePrompt", () => {
 });
 
 describe("buildFinalSystemPrompt", () => {
-  it("lists every section as an H2 with its instruction", () => {
+  it("lists every section as an H1 with its instruction", () => {
     const prompt = buildFinalSystemPrompt({
       sections: SECTIONS,
       language: null,
     });
-    expect(prompt).toContain('"## Summary"');
+    expect(prompt).toContain('"# Summary"');
     expect(prompt).toContain("One-paragraph executive summary.");
-    expect(prompt).toContain('"## Key Decisions"');
+    expect(prompt).toContain('"# Key Decisions"');
   });
 
-  it("pins the first H2 heading so the enhance validator accepts output", () => {
+  it("pins the first line so the enhance validator accepts output", () => {
     const prompt = buildFinalSystemPrompt({
       sections: SECTIONS,
       language: null,
     });
-    expect(prompt).toContain('first H2 heading must be exactly "## Summary"');
+    expect(prompt).toContain(
+      'first line of the output must be exactly "# Summary"',
+    );
   });
 
   it("includes the empty-section and injection-guard rules", () => {

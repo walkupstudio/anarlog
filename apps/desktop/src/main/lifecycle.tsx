@@ -8,13 +8,13 @@ import { buildChatTools } from "~/chat/tools";
 import { useRegisterTools } from "~/contexts/tool";
 import { useSearchEngine } from "~/search/contexts/engine";
 import { initEnhancerService } from "~/services/enhancer";
-import { seedStructuredSummaryTemplates } from "~/summary/templates";
 import { getSessionEvent } from "~/session/utils";
 import { useDesktopTabLifecycle } from "~/shared/desktop-tab-lifecycle";
 import * as main from "~/store/tinybase/store/main";
 import * as settings from "~/store/tinybase/store/settings";
 import { useTabs } from "~/store/zustand/tabs";
 import { MainListenerControlBridge } from "~/stt/window-control";
+import { seedStructuredSummaryTemplates } from "~/summary/templates";
 
 export function useClassicMainLifecycle() {
   const openNew = useTabs((state) => state.openNew);

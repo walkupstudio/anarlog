@@ -87,6 +87,9 @@ export async function* structuredSummaryWorkflow(params: {
       maxOutputTokens: COMBINE_MAX_TOKENS,
       prompt: buildCombinePrompt(chunkSummaries),
     });
+    if (!combined.text.trim()) {
+      throw new Error("Failed to combine chunk summaries.");
+    }
     source = combined.text;
     sourceKind = "summary";
   }

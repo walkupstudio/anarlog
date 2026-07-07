@@ -29,3 +29,32 @@ Conflicts should only appear in the files listed above.
 ## Pre-existing baseline failures
 
 (none observed)
+
+## Behavioral dependencies
+
+`~/summary/workflow.ts` reuses upstream enhance machinery rather than
+reimplementing it, so it depends on the exact behavior of:
+
+- `createEnhanceValidator`
+  (`apps/desktop/src/store/zustand/ai-task/task-configs/enhance-validator.ts`)
+  — the early-validation contract that the fork's `buildFinalSystemPrompt`
+  output must satisfy (first streamed H1 fuzzy-matches the first template
+  section title).
+- `withEarlyValidationRetry`
+  (`apps/desktop/src/store/zustand/ai-task/shared/validate.ts`) — the
+  streaming/retry loop the workflow drives its `streamText` call through.
+- `ensureMarkdownFirstLineTitle` / `enhance-success.ts`
+  (`apps/desktop/src/store/zustand/ai-task/task-configs/enhance-success.ts`,
+  `apps/desktop/src/session/title-content.ts`) — persists the session title
+  as the markdown's first line at save time, which is why the structured
+  summary prompt must NOT emit its own title heading.
+
+Upstream drift in any of these can silently break the fork (wrong output
+format, failed validation, duplicated titles) without producing a merge
+conflict, since the fork only calls into them rather than modifying them.
+
+## Known limitations
+
+- The "Summarize from transcript" action lives on the enhanced-note header
+  menu, so a session that has never been enhanced needs one regular
+  enhance/auto-enhance pass first before the action is available.

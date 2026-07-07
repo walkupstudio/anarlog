@@ -22,7 +22,7 @@ export const STANDARD_MEETING_SECTIONS: TemplateSection[] = [
   {
     title: "Action Items",
     description:
-      'List all assigned tasks as a markdown table with header "| Owner | Task | Due | Reference | Timestamp |". For each row give the owner (or "Unassigned"), the task, the due date (or "Not specified"), a short quote of the transcript line the task came from, and its [MM:SS] timestamp.',
+      'List all assigned tasks as a markdown table with header "| Owner | Task | Due | Reference | Timestamp |". For each row give the owner (or "Unassigned"), the task, the due date (or "Not specified"), a short quote of the transcript line the task came from, and its bracketed [MM:SS] or [H:MM:SS] timestamp.',
   },
   {
     title: "Discussion Highlights",
