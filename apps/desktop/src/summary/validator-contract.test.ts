@@ -5,9 +5,9 @@
 // meeting-title heading.
 import { describe, expect, it } from "vitest";
 
-import { createEnhanceValidator } from "~/store/zustand/ai-task/task-configs/enhance-validator";
-
 import { buildFinalSystemPrompt } from "./prompts";
+
+import { createEnhanceValidator } from "~/store/zustand/ai-task/task-configs/enhance-validator";
 
 const SECTIONS = [
   { title: "Summary", description: "One-paragraph executive summary." },
