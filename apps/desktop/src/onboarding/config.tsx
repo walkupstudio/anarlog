@@ -1,6 +1,7 @@
 import { platform } from "@tauri-apps/plugin-os";
 
 import type { SectionStatus } from "./shared";
+import { LOCAL_ONLY } from "~/fork/local-mode";
 
 export type OnboardingStep =
   | "permissions"
@@ -14,8 +15,10 @@ const STEPS_MACOS: OnboardingStep[] = [
   "login",
   "calendar",
   "final",
-];
-const STEPS_OTHER: OnboardingStep[] = ["login", "calendar", "final"];
+].filter((s) => !(LOCAL_ONLY && s === "login")) as OnboardingStep[];
+const STEPS_OTHER: OnboardingStep[] = (
+  ["login", "calendar", "final"] as OnboardingStep[]
+).filter((s) => !(LOCAL_ONLY && s === "login"));
 
 function getOnboardingSteps(): OnboardingStep[] {
   return platform() === "macos" ? STEPS_MACOS : STEPS_OTHER;
