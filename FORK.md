@@ -58,3 +58,11 @@ conflict, since the fork only calls into them rather than modifying them.
 - The "Summarize from transcript" action lives on the enhanced-note header
   menu, so a session that has never been enhanced needs one regular
   enhance/auto-enhance pass first before the action is available.
+
+## Build requirements (macOS)
+
+- Rust 1.94.0 via rustup (pinned by rust-toolchain.toml)
+- pnpm 11 (installed at ~/.hermes/node/bin)
+- **Full Xcode** (not just Command Line Tools): `crates/transcribe-soniqo` compiles Metal
+  shaders with `xcrun metal`, which CLT does not provide. After installing Xcode:
+  `sudo xcode-select -s /Applications/Xcode.app/Contents/Developer && sudo xcodebuild -license accept`
