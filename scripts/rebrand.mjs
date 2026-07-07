@@ -13,6 +13,12 @@ const CHECK = process.argv.includes("--check");
 const BRAND_FROM = "Anarlog";
 const BRAND_TO = "Recap";
 
+const isModuleContextLine = (line) =>
+  /^\s*(import|export)\b/.test(line) ||   // import/export statement starts
+  /\bfrom\s*["']/.test(line) ||           // ...} from "path" continuations
+  /\bimport\s*\(/.test(line) ||           // dynamic import()
+  /\brequire\s*\(/.test(line);            // require()
+
 function* walk(dir) {
   for (const name of readdirSync(dir)) {
     const p = join(dir, name);
@@ -27,8 +33,8 @@ function* walk(dir) {
 }
 
 let changed = 0;
-let remaining = 0;
-const errors = [];
+const refusals = [];
+const rebrandables = [];
 
 for (const file of walk(TARGET_DIR)) {
   const src = readFileSync(file, "utf8");
@@ -39,12 +45,11 @@ for (const file of walk(TARGET_DIR)) {
     .map((line, i) => {
       if (!line.includes(BRAND_FROM)) return line;
 
-      const isImportLine =
-        /^\s*(import|export)\b.*\bfrom\b/.test(line) || /require\(/.test(line);
+      const isModuleContext = isModuleContextLine(line);
 
-      if (isImportLine) {
+      if (isModuleContext) {
         // Split on quoted strings: odd indices are quoted, even are unquoted.
-        // Rename only in unquoted segments (identifiers), refuse if found in quotes (paths).
+        // Refuse if BRAND_FROM appears in a quoted module path.
         const segments = line.split(/("[^"]*"|'[^']*')/);
         let refused = false;
 
@@ -52,11 +57,20 @@ for (const file of walk(TARGET_DIR)) {
           .map((seg, idx) => {
             const isQuoted = idx % 2 === 1;
             if (isQuoted) {
-              // Check if module path contains BRAND_FROM
-              if (seg.includes(BRAND_FROM)) {
+              // Check if this looks like a module path (contains /, \, or @)
+              const isPath =
+                seg.includes("/") || seg.includes("\\") || seg.includes("@");
+              if (isPath && seg.includes(BRAND_FROM)) {
+                // Refuse: brand name in a module path
                 refused = true;
+                return seg;
               }
-              return seg; // Don't transform quoted strings
+              if (isPath) {
+                // Safe path (no brand name): don't transform
+                return seg;
+              }
+              // Not a path: transform display strings as normal
+              return seg.replaceAll(BRAND_FROM, BRAND_TO);
             }
             // Transform unquoted segments (identifiers, keywords, etc.)
             return seg.replaceAll(BRAND_FROM, BRAND_TO);
@@ -64,18 +78,20 @@ for (const file of walk(TARGET_DIR)) {
           .join("");
 
         if (refused) {
-          errors.push(`${file}:${i + 1}: "${BRAND_FROM}" in an import/require path`);
+          refusals.push(`${file}:${i + 1}`);
           return line;
         }
 
         if (CHECK && transformed !== line) {
-          remaining++;
+          rebrandables.push(`${file}:${i + 1}`);
         }
         return CHECK ? line : transformed;
       }
 
-      // Non-import lines: transform normally.
-      remaining += CHECK ? 1 : 0;
+      // Non-module-context lines: transform normally (including display strings).
+      if (CHECK && line.includes(BRAND_FROM)) {
+        rebrandables.push(`${file}:${i + 1}`);
+      }
       return CHECK ? line : line.replaceAll(BRAND_FROM, BRAND_TO);
     })
     .join("\n");
@@ -86,13 +102,15 @@ for (const file of walk(TARGET_DIR)) {
   }
 }
 
-if (errors.length) {
-  console.error("Refused (fix manually):\n" + errors.join("\n"));
+if (refusals.length) {
+  refusals.forEach((loc) =>
+    console.error(`PATH HIT (would refuse): ${loc}`)
+  );
   process.exit(1);
 }
 if (CHECK) {
-  if (remaining > 0) {
-    console.error(`--check: ${remaining} rebrandable line(s) remain.`);
+  if (rebrandables.length > 0) {
+    rebrandables.forEach((loc) => console.error(`rebrandable: ${loc}`));
     process.exit(1);
   }
   console.log("--check: clean.");
