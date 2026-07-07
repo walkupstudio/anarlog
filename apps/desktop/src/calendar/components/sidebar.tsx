@@ -21,6 +21,7 @@ import { type CalendarProvider, PROVIDERS } from "./shared";
 import { useAuth } from "~/auth";
 import { useBillingAccess } from "~/auth/billing";
 import { useConnections } from "~/auth/useConnections";
+import { LOCAL_ONLY } from "~/fork/local-mode";
 import { useNativeContextMenu } from "~/shared/hooks/useNativeContextMenu";
 import { usePermission } from "~/shared/hooks/usePermissions";
 import { openIntegrationUrl } from "~/shared/integration";
@@ -271,6 +272,7 @@ function ProviderAccordionItem({
                 className={cn([
                   "flex min-w-0 items-center gap-2 transition-opacity duration-150",
                   requiresPro &&
+                    !LOCAL_ONLY &&
                     "group-focus-within/row:opacity-0 group-hover/row:opacity-0",
                 ])}
               >
@@ -287,7 +289,7 @@ function ProviderAccordionItem({
           </AccordionTriggerPrimitive>
         </AccordionHeader>
 
-        {requiresPro ? (
+        {requiresPro && !LOCAL_ONLY ? (
           <button
             type="button"
             onClick={handleUpgradeToPro}

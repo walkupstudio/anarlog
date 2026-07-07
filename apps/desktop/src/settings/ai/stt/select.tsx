@@ -46,6 +46,7 @@ import {
 
 import { useBillingAccess } from "~/auth/billing";
 import { useNotifications } from "~/contexts/notifications";
+import { LOCAL_ONLY } from "~/fork/local-mode";
 import { providerRowId, ProviderIconSlot } from "~/settings/ai/shared";
 import {
   getProviderSelectionBlockers,
@@ -552,9 +553,15 @@ function useConfiguredMapping(): Record<
       }
 
       if (provider.id === "hyprnote") {
-        const models: ModelEntry[] = [
-          { id: "cloud", isDownloaded: billing.isPaid, category: "latest" },
-        ];
+        const models: ModelEntry[] = LOCAL_ONLY
+          ? []
+          : [
+              {
+                id: "cloud",
+                isDownloaded: billing.isPaid,
+                category: "latest",
+              },
+            ];
 
         if (isAppleSilicon) {
           soniqoModels.forEach((model, i) => {

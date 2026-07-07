@@ -2,6 +2,7 @@ import type { ServerStatus } from "@hypr/plugin-local-stt";
 
 import type { DownloadProgress, ToastCondition, ToastType } from "./types";
 
+import { LOCAL_ONLY } from "~/fork/local-mode";
 import type { DevtoolsToastPreview } from "~/store/zustand/devtools-toast-preview";
 
 const ANARLOG_ICON_SRC = "/assets/anarlog-icon.png";
@@ -126,48 +127,52 @@ export function createToastRegistry({
       condition: () =>
         hasSttConfigured && !hasLLMConfigured && !isAiIntelligenceTabActive,
     },
-    {
-      toast: {
-        id: "pro-requires-login",
-        icon: (
-          <img
-            src={ANARLOG_ICON_SRC}
-            alt="Anarlog Pro"
-            className="size-5 object-contain object-center"
-          />
-        ),
-        description: "Sign in required",
-        primaryAction: {
-          label: "Sign in",
-          onClick: onSignIn,
-        },
-        dismissible: true,
-      },
-      // suppress until auth resolves to avoid flash on startup
-      condition: () =>
-        !isAuthLoading &&
-        !isAuthenticated &&
-        (hasProSttConfigured || hasProLlmConfigured),
-    },
-    {
-      toast: {
-        id: "upgrade-to-pro",
-        description: "Pro features available",
-        primaryAction: {
-          label: "Upgrade",
-          onClick: onSignIn,
-        },
-        dismissible: true,
-      },
-      // suppress until auth resolves to avoid flash on startup
-      condition: () =>
-        !isAuthLoading &&
-        !isAuthenticated &&
-        hasLLMConfigured &&
-        hasSttConfigured &&
-        !hasProSttConfigured &&
-        !hasProLlmConfigured,
-    },
+    ...(LOCAL_ONLY
+      ? []
+      : [
+          {
+            toast: {
+              id: "pro-requires-login",
+              icon: (
+                <img
+                  src={ANARLOG_ICON_SRC}
+                  alt="Anarlog Pro"
+                  className="size-5 object-contain object-center"
+                />
+              ),
+              description: "Sign in required",
+              primaryAction: {
+                label: "Sign in",
+                onClick: onSignIn,
+              },
+              dismissible: true,
+            },
+            // suppress until auth resolves to avoid flash on startup
+            condition: () =>
+              !isAuthLoading &&
+              !isAuthenticated &&
+              (hasProSttConfigured || hasProLlmConfigured),
+          },
+          {
+            toast: {
+              id: "upgrade-to-pro",
+              description: "Pro features available",
+              primaryAction: {
+                label: "Upgrade",
+                onClick: onSignIn,
+              },
+              dismissible: true,
+            },
+            // suppress until auth resolves to avoid flash on startup
+            condition: () =>
+              !isAuthLoading &&
+              !isAuthenticated &&
+              hasLLMConfigured &&
+              hasSttConfigured &&
+              !hasProSttConfigured &&
+              !hasProLlmConfigured,
+          },
+        ]),
   ];
 }
 

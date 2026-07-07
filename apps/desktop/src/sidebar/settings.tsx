@@ -20,6 +20,7 @@ import { cn } from "@hypr/utils";
 
 import { CustomSidebarHeader } from "./custom-sidebar-header";
 
+import { LOCAL_ONLY } from "~/fork/local-mode";
 import { type SettingsTab, useTabs } from "~/store/zustand/tabs";
 
 type SettingsNavItem =
@@ -69,7 +70,9 @@ export function SettingsNav() {
       label: t`General`,
       items: [
         { id: "app", label: t`App`, icon: CogIcon },
-        { id: "account", label: t`Account`, icon: UserIcon },
+        ...(LOCAL_ONLY
+          ? []
+          : [{ id: "account" as const, label: t`Account`, icon: UserIcon }]),
         { id: "notifications", label: t`Notifications`, icon: BellIcon },
       ],
     },

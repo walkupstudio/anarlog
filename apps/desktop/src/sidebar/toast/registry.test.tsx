@@ -55,7 +55,7 @@ describe("sidebar toast registry", () => {
     expect(toast?.primaryAction?.label).toBe("Add");
   });
 
-  it("renders the pro upgrade toast without an icon", () => {
+  it("does not register the pro/account upsell toasts in LOCAL_ONLY mode", () => {
     const toast = getToastToShow(
       createToastRegistry({
         ...baseParams,
@@ -70,9 +70,9 @@ describe("sidebar toast registry", () => {
       onOpenSTTSettings: vi.fn(),
     });
 
-    expect(toast?.id).toBe("upgrade-to-pro");
-    expect(toast?.description).toBe("Pro features available");
-    expect(toast?.icon).toBeUndefined();
+    expect(toast).toBeNull();
+    // devtools preview stays available for local development/testing of the toast UI.
+    expect(previewToast.id).toBe("devtools-upgrade-to-pro");
     expect(previewToast.icon).toBeUndefined();
   });
 

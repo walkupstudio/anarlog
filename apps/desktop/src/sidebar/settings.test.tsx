@@ -86,7 +86,6 @@ describe("SettingsNav", () => {
     [
       "General",
       "App",
-      "Account",
       "Notifications",
       "Permissions",
       "Context",
@@ -100,5 +99,11 @@ describe("SettingsNav", () => {
     ].forEach((label) => {
       expect(screen.getByText(label)).toBeTruthy();
     });
+  });
+
+  it("hides the Account item in LOCAL_ONLY mode", () => {
+    render(<SettingsNav />);
+
+    expect(screen.queryByText("Account")).toBeNull();
   });
 });

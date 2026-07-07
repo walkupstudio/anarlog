@@ -1,5 +1,7 @@
 import { cn } from "@hypr/utils";
 
+import { LOCAL_ONLY } from "~/fork/local-mode";
+
 export function HyprProviderRow({ children }: { children: React.ReactNode }) {
   return (
     <div
@@ -24,6 +26,10 @@ export function HyprCloudCTAButton({
   highlight?: boolean;
   onClick: () => void;
 }) {
+  if (LOCAL_ONLY) {
+    return null;
+  }
+
   const buttonLabel = isPaid
     ? "Ready to use"
     : canStartTrial

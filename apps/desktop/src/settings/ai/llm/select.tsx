@@ -18,6 +18,7 @@ import { type Provider, PROVIDERS } from "./shared";
 
 import { useAuth } from "~/auth";
 import { useBillingAccess } from "~/auth/billing";
+import { LOCAL_ONLY } from "~/fork/local-mode";
 import { providerRowId, ProviderIconSlot } from "~/settings/ai/shared";
 import {
   getProviderSelectionBlockers,
@@ -206,7 +207,9 @@ export function SelectProviderAndModel() {
               <SelectValue placeholder={t`Select a provider`} />
             </SelectTrigger>
             <SelectContent>
-              {PROVIDERS.map((provider) => {
+              {PROVIDERS.filter(
+                (provider) => !(LOCAL_ONLY && provider.id === "hyprnote"),
+              ).map((provider) => {
                 const requiresPro = requiresEntitlement(
                   provider.requirements,
                   "pro",

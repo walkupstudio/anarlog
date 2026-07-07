@@ -31,7 +31,10 @@ vi.mock("~/contexts/notifications", () => ({
 vi.mock("~/shared/config", () => ({
   useConfigValues: () => ({
     current_llm_provider: "local",
-    current_llm_model: "model",
+    // Left unconfigured so a real toast ("missing-llm") stays reliably
+    // visible for these position-only tests: the cloud "upgrade-to-pro"
+    // toast this suite used to lean on is disabled in LOCAL_ONLY mode.
+    current_llm_model: "",
     current_stt_provider: "local",
     current_stt_model: "model",
   }),
@@ -105,7 +108,7 @@ describe("ToastArea", () => {
     });
 
     const toastContainer = screen
-      .getByText("Pro features available")
+      .getByText("Language model needed")
       .closest(".fixed") as HTMLElement | null;
 
     expect(toastContainer?.style.left).toBe("calc(50% + 0px)");
@@ -135,7 +138,7 @@ describe("ToastArea", () => {
     });
 
     const toastContainer = screen
-      .getByText("Pro features available")
+      .getByText("Language model needed")
       .closest(".fixed") as HTMLElement | null;
 
     expect(toastContainer?.style.left).toBe("calc(50% + 0px)");
@@ -180,7 +183,7 @@ describe("ToastArea", () => {
     });
 
     const toastContainer = screen
-      .getByText("Pro features available")
+      .getByText("Language model needed")
       .closest(".fixed") as HTMLElement | null;
 
     expect(toastContainer?.style.left).toBe("600px");
@@ -266,7 +269,7 @@ describe("ToastArea", () => {
     });
 
     const toastContainer = screen
-      .getByText("Pro features available")
+      .getByText("Language model needed")
       .closest(".fixed") as HTMLElement | null;
 
     expect(toastContainer?.style.top).toBe("56px");
@@ -317,7 +320,7 @@ describe("ToastArea", () => {
     });
 
     const toastContainer = screen
-      .getByText("Pro features available")
+      .getByText("Language model needed")
       .closest(".fixed") as HTMLElement | null;
 
     expect(toastContainer?.style.left).toBe("600px");
