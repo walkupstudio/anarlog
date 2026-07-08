@@ -174,6 +174,10 @@ Modified desktop files: `apps/desktop/src/settings/general/account.tsx` (removed
 
 Composer eyebrow (`/38` → `/60`) and editor placeholder (`/28` → `/45`) opacity raised for contrast on the dark floating panel; send button → `bg-primary text-primary-foreground` (blue = primary action). Fonts deduplicated from 8 woff2 to 3 `*-Variable.woff2` (duplicates confirmed byte-identical by md5) with one `@font-face` per family using weight-range descriptors; OFL licenses retained. Modified: `apps/desktop/src/composer/index.tsx`, `apps/desktop/src/styles/recap-fonts.css`, `apps/desktop/public/fonts/recap/`.
 
+### Debug surfaces off in LOCAL_ONLY
+
+`apps/desktop/src/main.tsx` (React Scan render-overlay no longer loads in dev when LOCAL_ONLY) and `apps/desktop/src/main/body.tsx` (devtools panel button short-circuited; `showDevtool` never queried). `main/body.test.tsx` devtools tests rewritten to the LOCAL_ONLY expectation. To debug the fork, temporarily flip `LOCAL_ONLY` in `apps/desktop/src/fork/local-mode.ts`.
+
 ### Phase C/D backlog (from Phase B review)
 
 

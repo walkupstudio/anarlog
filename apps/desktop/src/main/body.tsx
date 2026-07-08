@@ -41,6 +41,7 @@ import {
 import { useClassicMainShortcuts } from "./useShortcuts";
 
 import { useShell } from "~/contexts/shell";
+import { LOCAL_ONLY } from "~/fork/local-mode";
 import { scrollElementByWheel } from "~/shared/dom/scroll-wheel";
 import { useMountEffect } from "~/shared/hooks/useMountEffect";
 import {
@@ -106,10 +107,12 @@ export function ClassicMainBody() {
     let unlistenDevtoolsAction: (() => void) | undefined;
 
     const syncDevtoolsPanelButton = async () => {
-      const enabled = await commands.showDevtool().catch((error) => {
-        console.error("Failed to resolve devtools availability:", error);
-        return false;
-      });
+      const enabled =
+        !LOCAL_ONLY &&
+        (await commands.showDevtool().catch((error) => {
+          console.error("Failed to resolve devtools availability:", error);
+          return false;
+        }));
 
       if (cancelled) {
         return;

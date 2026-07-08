@@ -724,98 +724,34 @@ describe("ClassicMainBody", () => {
     expect(mocks.leftsidebar.toggleExpanded).toHaveBeenCalledTimes(1);
   });
 
-  it("shows the devtools button until the panel opens, then restores it when closed", async () => {
+  it("never renders the devtools button in LOCAL_ONLY mode", async () => {
     render(<ClassicMainBody />);
 
-    const searchButton = screen.getByRole("button", { name: "Search" });
-    const newNoteButton = screen.getByRole("button", { name: "New note" });
-    const devtoolsButton = await screen.findByRole("button", {
-      name: "Show devtools panel",
-    });
-
-    expect(searchButton.compareDocumentPosition(newNoteButton)).toBe(
-      Node.DOCUMENT_POSITION_FOLLOWING,
-    );
-    expect(newNoteButton.compareDocumentPosition(devtoolsButton)).toBe(
-      Node.DOCUMENT_POSITION_FOLLOWING,
-    );
-    expect(devtoolsButton.parentElement).toBe(newNoteButton.parentElement);
-
-    fireEvent.click(devtoolsButton);
-
-    expect(mocks.windowsCommands.devtoolsPanelShow).toHaveBeenCalledTimes(1);
-    expect(mocks.windowsCommands.devtoolsPanelHide).not.toHaveBeenCalled();
-    expect(
-      screen.getByRole("button", { name: "Show devtools panel" }),
-    ).toBeTruthy();
-
-    act(() => {
-      for (const listener of mocks.devtoolsPanelActionListeners) {
-        listener({ payload: { action: "panel:opened" } });
-      }
-    });
+    expect(screen.getByRole("button", { name: "Search" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "New note" })).toBeTruthy();
 
     await waitFor(() => {
-      expect(
-        screen.queryByRole("button", { name: "Show devtools panel" }),
-      ).toBeNull();
-    });
-
-    act(() => {
-      for (const listener of mocks.devtoolsPanelActionListeners) {
-        listener({ payload: { action: "panel:closed" } });
-      }
-    });
-
-    expect(
-      await screen.findByRole("button", { name: "Show devtools panel" }),
-    ).toBeTruthy();
-  });
-
-  it("hides the devtools button when the native panel is opened outside the sidebar", async () => {
-    render(<ClassicMainBody />);
-
-    expect(
-      await screen.findByRole("button", { name: "Show devtools panel" }),
-    ).toBeTruthy();
-
-    await waitFor(() => {
-      expect(mocks.devtoolsPanelActionListeners).toHaveLength(1);
-    });
-
-    act(() => {
-      for (const listener of mocks.devtoolsPanelActionListeners) {
-        listener({ payload: { action: "panel:opened" } });
-      }
-    });
-
-    expect(
-      screen.queryByRole("button", { name: "Show devtools panel" }),
-    ).toBeNull();
-
-    act(() => {
-      for (const listener of mocks.devtoolsPanelActionListeners) {
-        listener({ payload: { action: "panel:closed" } });
-      }
-    });
-
-    expect(
-      await screen.findByRole("button", { name: "Show devtools panel" }),
-    ).toBeTruthy();
-  });
-
-  it("does not show the devtools button when devtools are disabled", async () => {
-    vi.mocked(commands.showDevtool).mockResolvedValue(false);
-
-    render(<ClassicMainBody />);
-
-    await waitFor(() => {
-      expect(commands.showDevtool).toHaveBeenCalledTimes(1);
+      expect(mocks.devtoolsPanelActionListeners).toHaveLength(0);
     });
     expect(
       screen.queryByRole("button", { name: "Show devtools panel" }),
     ).toBeNull();
-    expect(mocks.devtoolsPanelActionListeners).toHaveLength(0);
+    // The availability command is short-circuited entirely in LOCAL_ONLY.
+    expect(commands.showDevtool).not.toHaveBeenCalled();
+    expect(mocks.windowsCommands.devtoolsPanelShow).not.toHaveBeenCalled();
+  });
+
+  it("stays hidden even when the backend reports devtools enabled", async () => {
+    vi.mocked(commands.showDevtool).mockResolvedValue(true);
+
+    render(<ClassicMainBody />);
+
+    await waitFor(() => {
+      expect(mocks.devtoolsPanelActionListeners).toHaveLength(0);
+    });
+    expect(
+      screen.queryByRole("button", { name: "Show devtools panel" }),
+    ).toBeNull();
   });
 
   it("renders expanded sidebar controls in the sidebar layout", () => {

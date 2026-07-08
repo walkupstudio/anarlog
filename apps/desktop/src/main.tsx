@@ -46,6 +46,8 @@ import {
 import { createAITaskStore } from "./store/zustand/ai-task";
 import { listenerStore } from "./store/zustand/listener/instance";
 
+import { LOCAL_ONLY } from "~/fork/local-mode";
+
 const toolRegistry = createToolRegistry();
 const queryClient = new QueryClient();
 
@@ -142,7 +144,7 @@ initWindowsPlugin();
 const rootElement = document.getElementById("root")!;
 
 async function enableReactScanInDev() {
-  if (!import.meta.env.DEV) {
+  if (!import.meta.env.DEV || LOCAL_ONLY) {
     return;
   }
 
