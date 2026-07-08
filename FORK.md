@@ -154,8 +154,15 @@ Consumers verified: `apps/desktop/src/session/components/floating/shared.tsx` (`
 
 Primary variant (review fix): `floating-action-surface.ts` also exports `floatingActionPrimarySurfaceClassName` (`border-transparent bg-primary text-primary-foreground hover:bg-primary/90`); `apps/desktop/src/session/components/listen-action.tsx` layers it via `FloatingButton`'s className pass-through (twMerge resolves the overrides) on the Listen start button and its loading/stop spinner state — only the Listen action goes blue; other floating actions keep the panel surface. New test: `apps/desktop/src/session/components/listen-action.test.tsx`.
 
+### Task C5: Stray neutrals in chrome
+
+Modified upstream files: `apps/desktop/src/session/components/title-breadcrumb.tsx` (nav and folder-crumb labels `text-neutral-700`/`text-neutral-600` → `text-muted-foreground`; these are secondary breadcrumb labels), `apps/desktop/src/session/components/title-input.tsx` (breadcrumb variant input `text-neutral-700` → `text-foreground`; this is primary content), `apps/desktop/src/main/update-banner.tsx` (`SidebarTimelineUpdateButton` on `bg-blue-500` with `text-white shadow-sm` and hover `bg-blue-600` → token-based `bg-primary text-primary-foreground hover:bg-primary/90` — shadow removed per no-shadow rule).
+
+Test file updated: `apps/desktop/src/main/update-banner.test.tsx` (assertion changed from expecting `bg-blue-500 hover:bg-blue-600` to `bg-primary hover:bg-primary/90`).
+
 ### Phase C/D backlog (from Phase B review)
 
+- RecordingIcon renders a red dot on the now-blue Listen button — needs a Phase D color decision (blue-on-blue prevents the naive C-2 rule).
 - Composer: 10px eyebrow at /38 (3.31:1) and editor placeholder at /28 (2.34:1) are sub-AA on the dark panel; revisit in the Phase D contrast sweep.
 - Composer send button is an off-white circle with blue arrow; consider `bg-primary` per "blue = primary actions" (Phase C call).
 
