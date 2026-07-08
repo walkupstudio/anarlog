@@ -502,10 +502,10 @@ export const TimelineView = memo(function TimelineView({
                 className={cn([
                   "sticky z-20",
                   bucketHeaderTopClassName,
-                  "bg-background/95 py-1 pr-1 pl-3 backdrop-blur",
+                  "bg-background/95 border-border border-b py-1 pr-1 pl-3 backdrop-blur",
                 ])}
               >
-                <div className="text-foreground text-base font-bold">
+                <div className="text-muted-foreground font-mono text-[11px] font-medium tracking-[0.08em] uppercase">
                   {bucket.label}
                 </div>
               </div>
@@ -664,7 +664,7 @@ function TimelineTopChip({
   onClick?: () => void;
 }) {
   const className = cn([
-    "border-border bg-card/95 text-muted-foreground flex h-6 items-center gap-1 rounded-full border px-2.5 text-xs font-medium shadow-xs backdrop-blur",
+    "border-border bg-card/95 text-muted-foreground flex h-6 items-center gap-1 rounded-full border px-2.5 text-xs font-medium backdrop-blur",
     onClick && "hover:bg-accent hover:text-foreground transition-colors",
     "focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-hidden",
     props.className,
@@ -802,7 +802,7 @@ function TimelineNowChip({
       type="button"
       aria-label={t`Go back to now`}
       className={cn([
-        "border-border bg-card/95 text-foreground flex h-6 items-center gap-1 rounded-full border px-2.5 text-xs font-semibold shadow-md backdrop-blur",
+        "border-border bg-card/95 text-foreground flex h-6 items-center gap-1 rounded-full border px-2.5 text-xs font-semibold backdrop-blur",
         "hover:border-border hover:bg-accent hover:text-foreground transition-colors",
         "focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-hidden",
         className,
@@ -1154,7 +1154,8 @@ function getTimelineScrollFadeMask({
   showBottomFade: boolean;
 }): string {
   if (showBottomFade) {
-    return "linear-gradient(to bottom, #000 0, #000 calc(100% - 28px), transparent 100%)";
+    // Mask colors are alpha-only (not theme colors) — physical color exception per FORK.md
+    return "linear-gradient(to bottom, black 0, black calc(100% - 28px), transparent 100%)";
   }
 
   return "none";

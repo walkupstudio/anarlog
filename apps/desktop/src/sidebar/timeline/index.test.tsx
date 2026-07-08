@@ -589,7 +589,7 @@ describe("TimelineView", () => {
     fireEvent.scroll(scroller!);
 
     expect(scroller!.style.maskImage).toBe(
-      "linear-gradient(to bottom, #000 0, #000 calc(100% - 28px), transparent 100%)",
+      "linear-gradient(to bottom, black 0, black calc(100% - 28px), transparent 100%)",
     );
   });
 
@@ -629,7 +629,7 @@ describe("TimelineView", () => {
     expect(queryTopFade(container)).toBeNull();
     expect(queryTopOccluder(container)?.className).toContain("h-12");
     expect(scroller!.style.maskImage).toBe(
-      "linear-gradient(to bottom, #000 0, #000 calc(100% - 28px), transparent 100%)",
+      "linear-gradient(to bottom, black 0, black calc(100% - 28px), transparent 100%)",
     );
   });
 
