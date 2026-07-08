@@ -23,6 +23,7 @@ import { TimezoneSelector } from "./timezone";
 import { WeekStartSelector } from "./week-start";
 
 import { SettingsPageTitle } from "~/settings/page-title";
+import { SettingsSectionLabel } from "~/settings/section-label";
 import { useConfigValues } from "~/shared/config";
 import * as settings from "~/store/tinybase/store/settings";
 
@@ -248,9 +249,11 @@ export function SettingsApp() {
       </div>
 
       <div>
-        <h2 className="mb-4 font-sans text-lg font-semibold">
-          <Trans>Language &amp; Region</Trans>
-        </h2>
+        <div className="mb-3">
+          <SettingsSectionLabel>
+            <Trans>Language &amp; Region</Trans>
+          </SettingsSectionLabel>
+        </div>
         <div className="flex flex-col gap-6">
           <form.Field name="ai_language">
             {(field) => (

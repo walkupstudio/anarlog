@@ -11,6 +11,7 @@ import {
 } from "@hypr/ui/components/ui/input-group";
 
 import { SettingsPageTitle } from "~/settings/page-title";
+import { SettingsSectionLabel } from "~/settings/section-label";
 import { useConfigValue } from "~/shared/config";
 import * as settings from "~/store/tinybase/store/settings";
 import { normalizeKeywordList, parseDictionaryTermsText } from "~/stt/keywords";
@@ -70,9 +71,9 @@ export function DictionarySettings({
         void form.handleSubmit();
       }}
     >
-      <h2 className="font-sans text-lg font-semibold">
+      <SettingsSectionLabel>
         <Trans>Dictionary</Trans>
-      </h2>
+      </SettingsSectionLabel>
 
       <InputGroup className="border-border/60 bg-card has-[[data-slot=input-group-control]:focus-visible]:border-border/70 min-h-12 rounded-full shadow-none has-[[data-slot=input-group-control]:focus-visible]:ring-0">
         <form.Field name="term">

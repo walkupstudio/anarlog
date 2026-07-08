@@ -2,7 +2,9 @@ import { Trans } from "@lingui/react/macro";
 import { type ReactNode, useId } from "react";
 
 import { Switch } from "@hypr/ui/components/ui/switch";
+
 import { LOCAL_ONLY } from "~/fork/local-mode";
+import { SettingsSectionLabel } from "~/settings/section-label";
 
 interface SettingItem {
   value: boolean;
@@ -62,9 +64,7 @@ export function AppSettingsView({
           />
           <SettingRow
             title={<Trans>Show tray icon</Trans>}
-            description={
-              <Trans>Keep Recap available from the menu bar.</Trans>
-            }
+            description={<Trans>Keep Recap available from the menu bar.</Trans>}
             checked={showTrayIcon.value}
             onChange={showTrayIcon.onChange}
           />
@@ -72,9 +72,11 @@ export function AppSettingsView({
       </section>
 
       <section>
-        <h2 className="mb-4 font-sans text-lg font-semibold">
-          <Trans>Meetings</Trans>
-        </h2>
+        <div className="mb-3">
+          <SettingsSectionLabel>
+            <Trans>Meetings</Trans>
+          </SettingsSectionLabel>
+        </div>
         <div className="flex flex-col gap-4">
           <SettingRow
             title={<Trans>Start when meeting begins</Trans>}

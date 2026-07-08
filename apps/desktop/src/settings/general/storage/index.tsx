@@ -34,6 +34,7 @@ import { cn } from "@hypr/utils";
 import { displayPath } from "./path-utils";
 import { useChangeContentPathWizard } from "./use-storage-wizard";
 
+import { SettingsSectionLabel } from "~/settings/section-label";
 import { useConfigValue } from "~/shared/config";
 import * as settings from "~/store/tinybase/store/settings";
 
@@ -99,9 +100,11 @@ export function StorageSettingsView() {
 
   return (
     <div>
-      <h2 className="mb-4 font-sans text-lg font-semibold">
-        <Trans>Storage</Trans>
-      </h2>
+      <div className="mb-3">
+        <SettingsSectionLabel>
+          <Trans>Storage</Trans>
+        </SettingsSectionLabel>
+      </div>
       <div className="flex flex-col gap-3">
         <AudioRetentionRow />
         <StoragePathRow

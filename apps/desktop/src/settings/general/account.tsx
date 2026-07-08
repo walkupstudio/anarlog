@@ -28,6 +28,7 @@ import { useAuth } from "~/auth";
 import { useBillingAccess } from "~/auth/billing";
 import { env } from "~/env";
 import { SettingsPageTitle } from "~/settings/page-title";
+import { SettingsSectionLabel } from "~/settings/section-label";
 import { waitForBillingUpdate } from "~/shared/billing";
 import { buildWebAppUrl } from "~/shared/utils";
 
@@ -362,10 +363,10 @@ function PlanBillingSection({
 
   return (
     <div>
-      <div className="mb-2 flex items-center justify-between">
-        <h2 className="font-sans text-lg font-semibold">
+      <div className="mb-3 flex items-center justify-between">
+        <SettingsSectionLabel>
           <Trans>Plan & Billing</Trans>
-        </h2>
+        </SettingsSectionLabel>
         {isPaid && (
           <button
             type="button"
@@ -439,9 +440,9 @@ function GuestPlanSection({ onSignIn }: { onSignIn: () => Promise<void> }) {
   return (
     <section className="border-border border-t pt-6">
       <div className="mb-4 flex flex-col gap-1">
-        <h2 className="font-sans text-lg font-semibold">
+        <SettingsSectionLabel>
           <Trans>Plans</Trans>
-        </h2>
+        </SettingsSectionLabel>
         <p className="text-muted-foreground text-sm">
           <Trans>Compare Free and Pro before you sign in.</Trans>
         </p>
