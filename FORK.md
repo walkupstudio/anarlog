@@ -152,6 +152,8 @@ Modified upstream files: `apps/desktop/src/shared/floating-action-surface.ts` (r
 
 Consumers verified: `apps/desktop/src/session/components/floating/shared.tsx` (`FloatingButton` applies the class to the Button element; hover state and visual hierarchy maintained by the new tokens). All call sites render sanely; no conflicting bg/text classes layered on top.
 
+Primary variant (review fix): `floating-action-surface.ts` also exports `floatingActionPrimarySurfaceClassName` (`border-transparent bg-primary text-primary-foreground hover:bg-primary/90`); `apps/desktop/src/session/components/listen-action.tsx` layers it via `FloatingButton`'s className pass-through (twMerge resolves the overrides) on the Listen start button and its loading/stop spinner state — only the Listen action goes blue; other floating actions keep the panel surface. New test: `apps/desktop/src/session/components/listen-action.test.tsx`.
+
 ### Phase C/D backlog (from Phase B review)
 
 - Composer: 10px eyebrow at /38 (3.31:1) and editor placeholder at /28 (2.34:1) are sub-AA on the dark panel; revisit in the Phase D contrast sweep.

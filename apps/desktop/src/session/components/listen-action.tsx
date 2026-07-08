@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 
 import { Spinner } from "@hypr/ui/components/ui/spinner";
+import { cn } from "@hypr/utils";
 
 import { OptionsMenu } from "./floating/options-menu";
 import { ActionableTooltipContent, FloatingButton } from "./floating/shared";
@@ -10,6 +11,7 @@ import {
   useListenButtonState,
 } from "./shared";
 
+import { floatingActionPrimarySurfaceClassName } from "~/shared/floating-action-surface";
 import { useTabs } from "~/store/zustand/tabs";
 import { useListener } from "~/stt/contexts";
 import { useStartListening } from "~/stt/useStartListening";
@@ -42,7 +44,10 @@ function StopListeningButton() {
   const stop = useListener((state) => state.stop);
 
   return (
-    <FloatingButton onClick={stop}>
+    <FloatingButton
+      onClick={stop}
+      className={floatingActionPrimarySurfaceClassName}
+    >
       <Spinner />
     </FloatingButton>
   );
@@ -78,7 +83,10 @@ function StartListeningButton({
         <FloatingButton
           onClick={startListening}
           disabled={isDisabled}
-          className="w-[148px] justify-start gap-2 pr-7 pl-3"
+          className={cn([
+            "w-[148px] justify-start gap-2 pr-7 pl-3",
+            floatingActionPrimarySurfaceClassName,
+          ])}
           tooltip={
             warningMessage
               ? {
