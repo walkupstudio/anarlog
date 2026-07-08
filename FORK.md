@@ -119,3 +119,10 @@ New fork-only files: `packages/ui/src/styles/recap-tokens.css` (palette; must st
 Modified upstream files: `packages/ui/src/styles/globals.css` (+1 import), `apps/desktop/src/styles/globals.css` (font tokens + 2 imports), `apps/desktop/src/shared/theme/apply.ts` + `apps/desktop/public/theme-boot.js` (dark default), `apps/desktop/src/onboarding/shared.tsx` (chapter prop), `apps/desktop/src/onboarding/index.tsx` (wordmark header, chapter numbers), `apps/desktop/src-tauri/icons/recap/*` (regenerated art), theme test files.
 
 Merge rule: token VALUES are fork-owned via recap-tokens.css — on upstream merge, take upstream's globals.css and re-append the recap-tokens import last; never rename tokens.
+
+### Phase C/D backlog (from Phase B review)
+
+- Dedupe committed font woff2 duplicates via variable-font weight-range descriptors.
+- Keep body-size `text-primary` text out of new screens (3.5:1 on card).
+- Stone-tinted drop shadows in `settings/general/account.tsx` + `calendar/components/sidebar.tsx` violate the no-shadow rule (Phase D sweep).
+- macOS icon-services cache can show a stale icon during dev (`rm -rf ~/Library/Caches/com.apple.iconservices*; killall Dock`).

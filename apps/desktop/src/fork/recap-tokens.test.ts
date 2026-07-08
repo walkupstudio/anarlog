@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 
@@ -38,5 +38,34 @@ describe("recap token palette", () => {
       [...css.matchAll(/@import\s+"([^"]+)"/g)].map((m) => m[1]).pop();
     expect(lastImport(uiGlobals)).toContain("recap-tokens");
     expect(lastImport(desktopGlobals)).toContain("recap-tokens");
+  });
+});
+
+describe("recap font tokens survive the ui dist bundle", () => {
+  const distPath = join(__dirname, "../../../../packages/ui/dist/globals.css");
+
+  const readDistCss = () => {
+    if (!existsSync(distPath)) {
+      throw new Error(
+        `packages/ui/dist/globals.css not found — run "pnpm -F @hypr/ui build" before running this test.`,
+      );
+    }
+    return readFileSync(distPath, "utf8");
+  };
+
+  it("bundles the Recap font families", () => {
+    const distCss = readDistCss();
+    expect(distCss).toContain("Inter");
+    expect(distCss).toContain("JetBrains Mono");
+  });
+
+  it("wins the cascade: the last --font-sans declaration uses Inter", () => {
+    const distCss = readDistCss();
+    const declarations = [...distCss.matchAll(/--font-sans:\s*([^;]+);/g)].map(
+      (m) => m[1],
+    );
+    expect(declarations.length).toBeGreaterThan(0);
+    const lastDeclaration = declarations[declarations.length - 1];
+    expect(lastDeclaration).toContain("Inter");
   });
 });

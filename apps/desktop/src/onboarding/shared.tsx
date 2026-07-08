@@ -83,7 +83,7 @@ export function OnboardingSection({
               className={cn([
                 "transition-all duration-300",
                 isCompleted
-                  ? "text-muted-foreground/70 text-xs font-normal"
+                  ? "text-muted-foreground/90 text-xs font-normal"
                   : "text-foreground font-sans text-xl font-semibold",
               ])}
             >
