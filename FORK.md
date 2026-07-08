@@ -160,6 +160,10 @@ Modified upstream files: `apps/desktop/src/session/components/title-breadcrumb.t
 
 Test file updated: `apps/desktop/src/main/update-banner.test.tsx` (assertion changed from expecting `bg-blue-500 hover:bg-blue-600` to `bg-primary hover:bg-primary/90`).
 
+### Task D1: settings heading system
+
+New fork-only file: `apps/desktop/src/settings/section-label.tsx` (`SettingsSectionLabel` — mono micro-label h2: `font-mono text-[11px] font-medium tracking-[0.08em] uppercase text-muted-foreground`, matching the timeline/onboarding chapters voice). Modified upstream files (secondary `text-lg font-semibold` h2 → `SettingsSectionLabel`, wrapper margins adjusted mb-2/mb-4 → mb-3 where needed): `apps/desktop/src/settings/personalization/index.tsx`, `settings/general/account.tsx` (×2), `settings/general/index.tsx`, `settings/general/storage/index.tsx`, `settings/general/app-settings.tsx`. `SettingsPageTitle` untouched.
+
 ### Phase C/D backlog (from Phase B review)
 
 - RecordingIcon renders a red dot on the now-blue Listen button — needs a Phase D color decision (blue-on-blue prevents the naive C-2 rule).
