@@ -114,13 +114,16 @@ conflict, since the fork only calls into them rather than modifying them.
 
 ## Phase B (design foundation)
 
-New fork-only files: `packages/ui/src/styles/recap-tokens.css` (palette; must stay the LAST @import in both globals.css files), `apps/desktop/src/styles/recap-fonts.css` + `apps/desktop/public/fonts/recap/` (bundled Space Grotesk/Inter/JetBrains Mono, OFL licenses), `apps/desktop/src/fork/wordmark.tsx`, `scripts/make-recap-icon.py`, `apps/desktop/src/fork/recap-tokens.test.ts`, `apps/desktop/src/fork/wordmark.test.tsx`.
+New fork-only files: `packages/ui/src/styles/recap-tokens.css` (palette; must stay the LAST @import in both globals.css files), `apps/desktop/src/styles/recap-fonts.css` + `apps/desktop/public/fonts/recap/` (bundled Space Grotesk/Inter/JetBrains Mono, OFL licenses), `apps/desktop/src/fork/wordmark.tsx`, `scripts/make-recap-icon.py` (superseded by `scripts/render-app-icon.swift` + committed source `apps/desktop/src-tauri/icons/recap-source.png` — the R-monogram icon; the swift header documents the TTF fetch), `apps/desktop/src/fork/recap-tokens.test.ts`, `apps/desktop/src/fork/wordmark.test.tsx`.
 
 Modified upstream files: `packages/ui/src/styles/globals.css` (+1 import), `apps/desktop/src/styles/globals.css` (font tokens + 2 imports), `apps/desktop/src/shared/theme/apply.ts` + `apps/desktop/public/theme-boot.js` (dark default), `apps/desktop/src/onboarding/shared.tsx` (chapter prop), `apps/desktop/src/onboarding/index.tsx` (wordmark header, chapter numbers), `apps/desktop/src-tauri/icons/recap/*` (regenerated art), theme test files.
 
 Merge rule: token VALUES are fork-owned via recap-tokens.css — on upstream merge, take upstream's globals.css and re-append the recap-tokens import last; never rename tokens.
 
 ### Phase C/D backlog (from Phase B review)
+
+- Composer: 10px eyebrow at /38 (3.31:1) and editor placeholder at /28 (2.34:1) are sub-AA on the dark panel; revisit in the Phase D contrast sweep.
+- Composer send button is an off-white circle with blue arrow; consider `bg-primary` per "blue = primary actions" (Phase C call).
 
 - Dedupe committed font woff2 duplicates via variable-font weight-range descriptors.
 - Keep body-size `text-primary` text out of new screens (3.5:1 on card).

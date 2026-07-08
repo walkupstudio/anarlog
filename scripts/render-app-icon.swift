@@ -4,6 +4,10 @@ import CoreText
 // Recap app icon: "R." monogram — Space Grotesk Bold R in off-white with an
 // electric-blue rounded-square period, on an ink rounded square following
 // Apple's Big Sur icon grid (824pt square centered on a 1024pt canvas).
+//
+// Needs SpaceGrotesk-Bold.ttf (CGFont can't read the repo's woff2 bundles):
+//   curl -sL "$(curl -s -A 'Mozilla/4.0' 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700' | grep -o 'https://[^)]*\.ttf' | head -1)" -o SpaceGrotesk-Bold.ttf
+// Usage: swiftc -O render-app-icon.swift -o render && ./render SpaceGrotesk-Bold.ttf out.png
 
 let canvas: CGFloat = 1024
 let args = CommandLine.arguments
@@ -44,11 +48,9 @@ ctx.setFillColor(ink.cgColor)
 ctx.fillPath()
 
 // Measure the R glyph.
-var glyph = CTFontGetGlyphsForCharacters(ctFont, [UniChar(0x52)], UnsafeMutablePointer<CGGlyph>.allocate(capacity: 1), 1) ? CGGlyph(0) : CGGlyph(0)
 var chars: [UniChar] = [0x52]  // "R"
 var glyphs: [CGGlyph] = [0]
 CTFontGetGlyphsForCharacters(ctFont, &chars, &glyphs, 1)
-glyph = glyphs[0]
 var bbox = CGRect.zero
 withUnsafeMutablePointer(to: &bbox) { boxPtr in
   _ = CTFontGetBoundingRectsForGlyphs(ctFont, .default, &glyphs, boxPtr, 1)
