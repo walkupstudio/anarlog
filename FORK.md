@@ -170,6 +170,10 @@ Modified ui package files: `packages/ui/src/components/ui/dialog.tsx` (`DialogCo
 
 Modified desktop files: `apps/desktop/src/settings/general/account.tsx` (removed stone-tinted button shadow `shadow-[0_4px_14px_rgba(87,83,78,0.4)]`), `apps/desktop/src/calendar/components/sidebar.tsx` (removed stone-tinted button shadow `shadow-[0_4px_14px_rgba(87,83,78,0.18)]`). Both buttons retain their `border-2 border-primary` borders for separation.
 
+### Task D3: composer contrast + font dedup
+
+Composer eyebrow (`/38` → `/60`) and editor placeholder (`/28` → `/45`) opacity raised for contrast on the dark floating panel; send button → `bg-primary text-primary-foreground` (blue = primary action). Fonts deduplicated from 8 woff2 to 3 `*-Variable.woff2` (duplicates confirmed byte-identical by md5) with one `@font-face` per family using weight-range descriptors; OFL licenses retained. Modified: `apps/desktop/src/composer/index.tsx`, `apps/desktop/src/styles/recap-fonts.css`, `apps/desktop/public/fonts/recap/`.
+
 ### Phase C/D backlog (from Phase B review)
 
 - RecordingIcon renders a red dot on the now-blue Listen button — needs a Phase D color decision (blue-on-blue prevents the naive C-2 rule).
