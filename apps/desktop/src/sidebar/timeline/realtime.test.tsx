@@ -41,10 +41,11 @@ describe("CurrentTimeIndicator", () => {
     expect(line?.className).toContain("dark:bg-red-400/70");
     expect(label?.className).toContain("border-red-500");
     expect(label?.className).toContain("bg-red-500");
-    expect(label?.className).toContain("text-white");
+    expect(label?.className).toContain("text-destructive-foreground");
     expect(label?.className).toContain("dark:border-red-500");
     expect(label?.className).toContain("dark:bg-red-500");
-    expect(label?.className).toContain("dark:text-white");
+    expect(label?.className).not.toContain("text-white");
+    expect(label?.className).not.toContain("shadow-xs");
   });
 
   test("syncs the label at the next wall-clock minute", () => {

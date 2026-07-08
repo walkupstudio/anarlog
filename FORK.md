@@ -138,6 +138,12 @@ Modified upstream files: `apps/desktop/src/session/components/note-input/header.
 
 Review fix (same task): the active-live pill branches in `header.tsx` (`bg-amber-50 text-amber-500 ...` degraded, `bg-red-50 text-red-500 ...` normal-live, plus their dark variants) → `bg-primary/10 text-primary hover:bg-primary/15`, with the degraded branch dimming to `text-primary/60` (color was its only cue; still color-only — a structural degraded affordance would be a behavioral change). The enhanced tab's `isError` red branch is a genuine error state and stays red. The `canResume` red hover preview + red ping resume dot were not adjudicated; left for Phase D.
 
+### Task C3: timeline sidebar restyle
+
+Modified upstream files: `apps/desktop/src/sidebar/timeline/index.tsx` (bucket date labels `text-base font-bold` → chapters-voice mono micro-label `font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-muted-foreground`; sticky bucket-header bar gains `border-b border-border` hairline; `TimelineTopChip` drops `shadow-xs` and `TimelineNowChip` drops `shadow-md` — both already carry a `border` hairline; scroll-fade mask literal `#000` → `black` keyword), `apps/desktop/src/sidebar/timeline/item.tsx` (live-stop button on `bg-destructive`: `text-white/80 hover:bg-white/15 hover:text-white` + `ring-white/70` → `text-destructive-foreground/80 hover:bg-destructive-foreground/15 hover:text-destructive-foreground` + `ring-destructive-foreground/70`), `apps/desktop/src/sidebar/timeline/realtime.tsx` (`CurrentTimeIndicator` label pill: `text-white`/`dark:text-white` → `text-destructive-foreground`, `shadow-xs` dropped — the solid pill with its existing border needs no shadow for separation), `apps/desktop/src/sidebar/timeline/index.test.tsx`, `apps/desktop/src/sidebar/timeline/item.test.tsx`, `apps/desktop/src/sidebar/timeline/realtime.test.tsx` (assertions updated to the new classes).
+
+**Physical-color exception:** the timeline scroll-fade mask (`getTimelineScrollFadeMask` in `sidebar/timeline/index.tsx`) uses the `black` keyword. Mask-image colors are alpha ramps — only the alpha channel matters, they are not theme colors — so this is a documented exception to the no-hardcoded-color rule.
+
 ### Phase C/D backlog (from Phase B review)
 
 - Composer: 10px eyebrow at /38 (3.31:1) and editor placeholder at /28 (2.34:1) are sub-AA on the dark panel; revisit in the Phase D contrast sweep.
