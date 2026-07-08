@@ -263,3 +263,5 @@
   background-color: rgb(234 179 8) !important;
   border-radius: 2px;
 }
+
+@import "../../../../packages/ui/src/styles/recap-tokens.css";
