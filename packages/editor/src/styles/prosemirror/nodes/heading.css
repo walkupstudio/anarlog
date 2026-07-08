@@ -5,7 +5,8 @@
   h4,
   h5,
   h6 {
-    color: #374151;
+    color: hsl(var(--foreground));
+    font-family: var(--font-display);
     font-weight: 600;
     margin-top: 0;
     margin-bottom: 0.25rem;
@@ -95,7 +96,7 @@
   }
 
   h3 {
-    color: #374151;
+    color: hsl(var(--foreground));
     font-weight: 600;
     font-size: 1.25rem;
     margin-top: 1.5rem;
@@ -103,7 +104,7 @@
   }
 
   h4 {
-    color: #374151;
+    color: hsl(var(--foreground));
     font-weight: 600;
     font-size: 1.125rem;
     margin-top: 1.25rem;
@@ -111,7 +112,7 @@
   }
 
   h5 {
-    color: #374151;
+    color: hsl(var(--foreground));
     font-weight: 600;
     font-size: 1rem;
     margin-top: 1rem;
@@ -119,10 +120,36 @@
   }
 
   h6 {
-    color: #374151;
+    color: hsl(var(--foreground));
     font-weight: 600;
     font-size: 0.875rem;
     margin-top: 1rem;
     margin-bottom: 0.25rem;
   }
+}
+
+/* Chapters motif: enhanced (structured) summaries get an auto-numbered mono
+   eyebrow on each H1 section heading. The .ProseMirror class and the editor's
+   own className (e.g. enhanced-summary-editor) land on the same contentDOM
+   node (see prosemirror-view's computeDocDeco), so this must be a compound
+   selector, not a descendant combinator. The first h1 is the note title
+   (enforced by title-layout.ts's normalizeTitleHeadingDoc), not a chapter,
+   so it's excluded from the count. */
+.ProseMirror.enhanced-summary-editor {
+  counter-reset: recap-chapter;
+}
+
+.ProseMirror.enhanced-summary-editor > h1:not(:first-child) {
+  counter-increment: recap-chapter;
+}
+
+.ProseMirror.enhanced-summary-editor > h1:not(:first-child)::before {
+  content: counter(recap-chapter, decimal-leading-zero) " / ";
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: hsl(var(--primary));
+  display: block;
+  margin-bottom: 0.25rem;
 }

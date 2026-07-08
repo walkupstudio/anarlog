@@ -1,6 +1,6 @@
 .prosemirror-editor {
   a {
-    color: #3b82f6;
+    color: hsl(var(--primary));
     cursor: text;
     text-decoration: underline;
 
@@ -20,7 +20,7 @@
     }
 
     &:hover {
-      color: #1d4ed8;
+      color: hsl(var(--recap-blue-hover));
       cursor: pointer;
     }
   }

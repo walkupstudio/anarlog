@@ -120,6 +120,16 @@ Modified upstream files: `packages/ui/src/styles/globals.css` (+1 import), `apps
 
 Merge rule: token VALUES are fork-owned via recap-tokens.css — on upstream merge, take upstream's globals.css and re-append the recap-tokens import last; never rename tokens.
 
+## Phase C (editor typography + chapters motif)
+
+### Task C1: editor typography retoken + chapters motif
+
+Modified upstream files: `packages/editor/src/styles/prosemirror.css` (placeholder color), `packages/editor/src/styles/prosemirror/base.css` (caret color), `packages/editor/src/styles/prosemirror/dark.css` (shrunk to a single genuinely dark-specific rule — the mention dropdown's inset-ring box-shadow — now that colors flow through tokens), `packages/editor/src/styles/prosemirror/mention.css` (dropdown surface/hover/icon colors), `packages/editor/src/styles/prosemirror/nodes/heading.css` (heading color + `font-family: var(--font-display)`, chapters-motif counter CSS), `packages/editor/src/styles/prosemirror/nodes/blockquote.css`, `packages/editor/src/styles/prosemirror/nodes/link.css` (link color + hover via `--recap-blue-hover`), `packages/editor/src/styles/prosemirror/nodes/code.css` (code block/inline code colors + `var(--font-mono)`), `packages/editor/src/styles/prosemirror/nodes/mark.css`, `packages/editor/src/styles/prosemirror/nodes/search.css` (yellow/orange highlight → primary-tinted), `packages/editor/src/styles/prosemirror/nodes/task-list.css` (checkbox border/fill/ring), `packages/editor/src/styles/prosemirror/nodes/hashtag.css` (amber → primary), `packages/editor/src/styles/prosemirror/nodes/table.css` (border/header bg/selection/resize-handle colors + `var(--font-mono)` on cells).
+
+Test file extended (not new): `apps/desktop/src/fork/recap-tokens.test.ts` (added a guard test that walks `packages/editor/src/styles/**/*.css` and fails on any `#hex` literal; empty allowlist for now).
+
+Chapters-motif note: the brief's proposed `.enhanced-summary-editor .ProseMirror > h1` selector assumed `.ProseMirror` was a descendant of the editor's className. It isn't — `prosemirror-view`'s `computeDocDeco` appends the app's `attributes.class` directly onto the same contentDOM node that already carries the `ProseMirror` class (see `node_modules/prosemirror-view/dist/index.js`, `computeDocDeco`), so the actual selector is the compound `.ProseMirror.enhanced-summary-editor > h1`. Additionally, `title-layout.ts`'s `normalizeTitleHeadingDoc` always coerces the enhanced note's first block into an h1 (the session title), so the counter uses `> h1:not(:first-child)` to avoid numbering the title as "chapter 01".
+
 ### Phase C/D backlog (from Phase B review)
 
 - Composer: 10px eyebrow at /38 (3.31:1) and editor placeholder at /28 (2.34:1) are sub-AA on the dark panel; revisit in the Phase D contrast sweep.

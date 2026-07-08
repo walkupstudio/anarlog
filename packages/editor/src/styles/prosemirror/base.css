@@ -17,7 +17,7 @@
   white-space: pre-wrap;
   hyphens: auto;
   padding-bottom: 24px;
-  caret-color: #374151;
+  caret-color: hsl(var(--primary));
   min-height: 100%;
 
   :first-child {

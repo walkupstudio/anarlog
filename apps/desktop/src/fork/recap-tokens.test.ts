@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 
@@ -67,5 +67,50 @@ describe("recap font tokens survive the ui dist bundle", () => {
     expect(declarations.length).toBeGreaterThan(0);
     const lastDeclaration = declarations[declarations.length - 1];
     expect(lastDeclaration).toContain("Inter");
+  });
+});
+
+describe("editor CSS is fully retokened (no hardcoded hex colors)", () => {
+  // No exceptions expected. If a physical-color literal is ever genuinely
+  // required (e.g. a fixed-white checkmark that must never invert), add its
+  // relative path here with a comment explaining why, and note it in
+  // FORK.md's Phase C section.
+  const allowlist: string[] = [];
+
+  const editorStylesDir = join(
+    __dirname,
+    "../../../../packages/editor/src/styles",
+  );
+
+  function collectCssFiles(dir: string): string[] {
+    return readdirSync(dir).flatMap((entry) => {
+      const fullPath = join(dir, entry);
+      if (statSync(fullPath).isDirectory()) {
+        return collectCssFiles(fullPath);
+      }
+      return entry.endsWith(".css") ? [fullPath] : [];
+    });
+  }
+
+  it("contains no #hex color literals outside the allowlist", () => {
+    const hexPattern = /#[0-9a-fA-F]{3,6}\b/g;
+    const offenders: string[] = [];
+
+    for (const filePath of collectCssFiles(editorStylesDir)) {
+      const relativePath = filePath.slice(
+        filePath.indexOf("packages/editor/src/styles"),
+      );
+      if (allowlist.includes(relativePath)) {
+        continue;
+      }
+
+      const css = readFileSync(filePath, "utf8");
+      const matches = css.match(hexPattern);
+      if (matches) {
+        offenders.push(`${relativePath}: ${matches.join(", ")}`);
+      }
+    }
+
+    expect(offenders).toEqual([]);
   });
 });
