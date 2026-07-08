@@ -14,10 +14,10 @@ const BRAND_FROM = "Anarlog";
 const BRAND_TO = "Recap";
 
 const isModuleContextLine = (line) =>
-  /^\s*(import|export)\b/.test(line) ||   // import/export statement starts
-  /\bfrom\s*["']/.test(line) ||           // ...} from "path" continuations
-  /\bimport\s*\(/.test(line) ||           // dynamic import()
-  /\brequire\s*\(/.test(line);            // require()
+  /^\s*(import|export)\b/.test(line) || // import/export statement starts
+  /\bfrom\s*["']/.test(line) || // ...} from "path" continuations
+  /\bimport\s*\(/.test(line) || // dynamic import()
+  /\brequire\s*\(/.test(line); // require()
 
 function* walk(dir) {
   for (const name of readdirSync(dir)) {
@@ -102,10 +102,10 @@ for (const file of walk(TARGET_DIR)) {
   }
 }
 
+// Refusal is non-atomic: other files/lines may already be rewritten on disk when this exits 1.
+// Run this script only against a clean git tree, and `git checkout`/`reset` to recover if a refusal fires.
 if (refusals.length) {
-  refusals.forEach((loc) =>
-    console.error(`PATH HIT (would refuse): ${loc}`)
-  );
+  refusals.forEach((loc) => console.error(`PATH HIT (would refuse): ${loc}`));
   process.exit(1);
 }
 if (CHECK) {

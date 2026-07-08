@@ -2,6 +2,7 @@ import { Trans } from "@lingui/react/macro";
 import { type ReactNode, useId } from "react";
 
 import { Switch } from "@hypr/ui/components/ui/switch";
+import { LOCAL_ONLY } from "~/fork/local-mode";
 
 interface SettingItem {
   value: boolean;
@@ -39,16 +40,18 @@ export function AppSettingsView({
             checked={autostart.value}
             onChange={autostart.onChange}
           />
-          <SettingRow
-            title={<Trans>Share usage data</Trans>}
-            description={
-              <Trans>
-                Send anonymous usage analytics to help improve Recap.
-              </Trans>
-            }
-            checked={telemetryConsent.value}
-            onChange={telemetryConsent.onChange}
-          />
+          {!LOCAL_ONLY && (
+            <SettingRow
+              title={<Trans>Share usage data</Trans>}
+              description={
+                <Trans>
+                  Send anonymous usage analytics to help improve Recap.
+                </Trans>
+              }
+              checked={telemetryConsent.value}
+              onChange={telemetryConsent.onChange}
+            />
+          )}
           <SettingRow
             title={<Trans>Show app in Dock</Trans>}
             description={

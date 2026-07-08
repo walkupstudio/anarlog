@@ -7,6 +7,7 @@ structured summary pipeline. Spec and plan live in the sibling
 ## New (fork-only) files
 
 - `apps/desktop/src/summary/` — entire directory
+- `scripts/make-placeholder-icon.py`
 
 ## Modified upstream files
 
@@ -18,13 +19,21 @@ structured summary pipeline. Spec and plan live in the sibling
 - apps/desktop/src/services/enhancer/index.ts                                (mode in EnhanceOpts)
 - apps/desktop/src/session/components/note-input/enhanced-actions.ts         (mode in onRegenerate)
 - apps/desktop/src/session/components/note-input/header.tsx                  (context-menu item)
+- crates/template-app/assets/chat.system.md.jinja                           (brand name in system prompt)
+- crates/template-app-legacy/assets/chat.system.jinja                       (brand name in system prompt)
+- crates/template-app/src/chat.rs                                           (inline snapshot text)
+- crates/detect/src/list/mod.rs                                             (self-app bundle id/name/path entries)
+- plugins/detect/src/policy.rs                                              (Hyprnote category bundle id)
 
 ## Merging upstream
 
     git fetch upstream
     git merge upstream/main
 
-Conflicts should only appear in the files listed above.
+Conflicts are most likely in the files listed above, but the rebrand also touches
+strings and identifiers scattered across `apps/desktop/src/**` (via `scripts/rebrand.mjs`)
+and other places noted in "Known brand remnants" below — conflicts are not guaranteed
+to be limited to this list.
 
 ## Pre-existing baseline failures
 
@@ -58,6 +67,15 @@ conflict, since the fork only calls into them rather than modifying them.
 - The "Summarize from transcript" action lives on the enhanced-note header
   menu, so a session that has never been enhanced needs one regular
   enhance/auto-enhance pass first before the action is available.
+
+## Known brand remnants (accepted)
+
+- The old Anarlog logo PNG is still used as the provider icon (Phase B art; not
+  yet replaced).
+- `mainBinaryName` is still `anarlog-dev`.
+- The `hyprnote` and `char` deep-link schemes are still registered alongside
+  the fork's own scheme.
+- The tray menu's version string still renders `(dev)`.
 
 ## Build requirements (macOS)
 

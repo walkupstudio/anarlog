@@ -40,4 +40,10 @@ describe("AppSettingsView", () => {
 
     expect(screen.getByText("Show floating bar")).toBeTruthy();
   });
+
+  it("hides the usage analytics setting in LOCAL_ONLY mode", () => {
+    renderAppSettings();
+
+    expect(screen.queryByText("Share usage data")).toBeNull();
+  });
 });

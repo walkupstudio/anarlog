@@ -34,6 +34,7 @@ impl AppCategory {
                 "com.hyprnote.stable",
                 "com.hyprnote.nightly",
                 "com.hyprnote.staging",
+                "studio.walkup.recap",
             ],
             Self::Dictation => &[
                 "com.electron.wispr-flow",

@@ -20,6 +20,7 @@ const SELF_BUNDLE_IDS: &[&str] = &[
     "com.hyprnote.stable",
     "com.hyprnote.staging",
     "com.hyprnote.nightly",
+    "studio.walkup.recap",
 ];
 
 const SELF_APP_NAMES: &[&str] = &[
@@ -32,6 +33,7 @@ const SELF_APP_NAMES: &[&str] = &[
     "char",
     "char staging",
     "char nightly",
+    "recap",
 ];
 
 const SELF_APP_PATH_SEGMENTS: &[&str] = &[
@@ -44,6 +46,7 @@ const SELF_APP_PATH_SEGMENTS: &[&str] = &[
     "/char.app/",
     "/char staging.app/",
     "/char nightly.app/",
+    "/recap.app/",
 ];
 
 fn is_self_app(app: &InstalledApp) -> bool {
@@ -98,6 +101,7 @@ mod tests {
     fn test_is_self_app_matches_known_bundle_ids() {
         assert!(is_self_app(&app("com.hyprnote.stable", "Anarlog")));
         assert!(is_self_app(&app("com.hyprnote.Hyprnote", "Hyprnote")));
+        assert!(is_self_app(&app("studio.walkup.recap", "Recap")));
     }
 
     #[test]
@@ -105,6 +109,7 @@ mod tests {
         assert!(is_self_app(&app("pid:42", "Anarlog")));
         assert!(is_self_app(&app("pid:43", "Char Nightly")));
         assert!(is_self_app(&app("pid:44", "Hyprnote Staging")));
+        assert!(is_self_app(&app("pid:45", "Recap")));
     }
 
     #[test]
@@ -115,6 +120,10 @@ mod tests {
         )));
         assert!(is_self_app(&app(
             "/Applications/Hyprnote Nightly.app/Contents/MacOS/Hyprnote Nightly",
+            "Unknown",
+        )));
+        assert!(is_self_app(&app(
+            "/Applications/Recap.app/Contents/MacOS/recap",
             "Unknown",
         )));
     }
