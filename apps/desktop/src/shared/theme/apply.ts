@@ -18,7 +18,8 @@ export function normalizeThemePreference(
   if (stored === "light" || stored === "dark" || stored === "system") {
     return stored;
   }
-  return "system";
+  // Recap fork: default to dark when no preference is stored.
+  return "dark";
 }
 
 export function resolveBootIsDark(

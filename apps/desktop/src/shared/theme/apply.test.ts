@@ -41,9 +41,9 @@ describe("normalizeThemePreference", () => {
     expect(normalizeThemePreference("system")).toBe("system");
   });
 
-  it("falls back to system for missing or invalid values", () => {
-    expect(normalizeThemePreference(null)).toBe("system");
-    expect(normalizeThemePreference("invalid")).toBe("system");
+  it("defaults to dark when nothing is stored (Recap fork)", () => {
+    expect(normalizeThemePreference(null)).toBe("dark");
+    expect(normalizeThemePreference("invalid")).toBe("dark");
   });
 });
 
@@ -56,9 +56,9 @@ describe("themePreferenceFromSettings", () => {
     ).toBe("dark");
   });
 
-  it("falls back to system when theme is missing", () => {
-    expect(themePreferenceFromSettings({ general: {} })).toBe("system");
-    expect(themePreferenceFromSettings(undefined)).toBe("system");
+  it("defaults to dark when theme is missing (Recap fork)", () => {
+    expect(themePreferenceFromSettings({ general: {} })).toBe("dark");
+    expect(themePreferenceFromSettings(undefined)).toBe("dark");
   });
 });
 
@@ -68,16 +68,16 @@ describe("resolveBootIsDark", () => {
     expect(resolveBootIsDark("dark", false)).toBe(true);
   });
 
-  it("follows system preference when stored theme is system or missing", () => {
+  it("follows system preference when stored theme is system, but defaults to dark when missing", () => {
     expect(resolveBootIsDark("system", true)).toBe(true);
     expect(resolveBootIsDark("system", false)).toBe(false);
-    expect(resolveBootIsDark(null, true)).toBe(true);
-    expect(resolveBootIsDark(null, false)).toBe(false);
+    expect(resolveBootIsDark(null, true)).toBe(true); // null → "dark" → true
+    expect(resolveBootIsDark(null, false)).toBe(true); // null → "dark" → true (Recap fork)
   });
 
-  it("treats invalid boot values like system to avoid theme flashes", () => {
-    expect(resolveBootIsDark("legacy-value", true)).toBe(true);
-    expect(resolveBootIsDark("legacy-value", false)).toBe(false);
+  it("treats invalid boot values as dark (Recap fork default)", () => {
+    expect(resolveBootIsDark("legacy-value", true)).toBe(true); // invalid → "dark" → true
+    expect(resolveBootIsDark("legacy-value", false)).toBe(true); // invalid → "dark" → true (Recap fork)
   });
 });
 
