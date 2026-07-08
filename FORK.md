@@ -146,6 +146,12 @@ Modified upstream files: `apps/desktop/src/sidebar/timeline/index.tsx` (bucket d
 
 **Physical-color exception:** the timeline scroll-fade mask (`getTimelineScrollFadeMask` in `sidebar/timeline/index.tsx`) uses the `black` keyword. Mask-image colors are alpha ramps — only the alpha channel matters, they are not theme colors — so this is a documented exception to the no-hardcoded-color rule.
 
+### Task C4: Floating action button retoken
+
+Modified upstream files: `apps/desktop/src/shared/floating-action-surface.ts` (replaced bespoke rgba-shadow glassmorphism with token-based system: `border border-app-floating-border bg-app-floating-panel/95 text-foreground backdrop-blur-md hover:bg-app-floating-panel` — removed all inset/drop shadows), `apps/desktop/src/shared/floating-action-surface.test.ts` (assertions updated to verify new token classes and absence of shadow utilities).
+
+Consumers verified: `apps/desktop/src/session/components/floating/shared.tsx` (`FloatingButton` applies the class to the Button element; hover state and visual hierarchy maintained by the new tokens). All call sites render sanely; no conflicting bg/text classes layered on top.
+
 ### Phase C/D backlog (from Phase B review)
 
 - Composer: 10px eyebrow at /38 (3.31:1) and editor placeholder at /28 (2.34:1) are sub-AA on the dark panel; revisit in the Phase D contrast sweep.
