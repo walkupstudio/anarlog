@@ -3,49 +3,19 @@
    Served from public/fonts/recap — no network fetch. */
 @font-face {
   font-family: "Space Grotesk";
-  src: url("/fonts/recap/SpaceGrotesk-400.woff2") format("woff2");
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Space Grotesk";
-  src: url("/fonts/recap/SpaceGrotesk-500.woff2") format("woff2");
-  font-weight: 500;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Space Grotesk";
-  src: url("/fonts/recap/SpaceGrotesk-700.woff2") format("woff2");
-  font-weight: 700;
+  src: url("/fonts/recap/SpaceGrotesk-Variable.woff2") format("woff2");
+  font-weight: 400 700;
   font-display: swap;
 }
 @font-face {
   font-family: "Inter";
-  src: url("/fonts/recap/Inter-400.woff2") format("woff2");
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Inter";
-  src: url("/fonts/recap/Inter-500.woff2") format("woff2");
-  font-weight: 500;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Inter";
-  src: url("/fonts/recap/Inter-600.woff2") format("woff2");
-  font-weight: 600;
+  src: url("/fonts/recap/Inter-Variable.woff2") format("woff2");
+  font-weight: 400 600;
   font-display: swap;
 }
 @font-face {
   font-family: "JetBrains Mono";
-  src: url("/fonts/recap/JetBrainsMono-400.woff2") format("woff2");
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: "JetBrains Mono";
-  src: url("/fonts/recap/JetBrainsMono-500.woff2") format("woff2");
-  font-weight: 500;
+  src: url("/fonts/recap/JetBrainsMono-Variable.woff2") format("woff2");
+  font-weight: 400 500;
   font-display: swap;
 }

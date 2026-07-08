@@ -120,7 +120,7 @@ function ComposerSettingsCard() {
     >
       <div className="mb-3 flex items-center justify-between gap-3">
         <div data-tauri-drag-region className="min-w-0 flex-1 pr-4">
-          <p className="text-popover-foreground/38 text-[10px] font-semibold tracking-[0.24em] uppercase">
+          <p className="text-popover-foreground/60 text-[10px] font-semibold tracking-[0.24em] uppercase">
             Composer
           </p>
           <p className="text-popover-foreground/72 truncate pt-1 text-sm">
@@ -204,7 +204,7 @@ function ComposerInput({
     >
       <div className="mb-3 flex items-start justify-between gap-4">
         <div data-tauri-drag-region className="min-w-0 flex-1 pr-4">
-          <p className="text-popover-foreground/38 text-[10px] font-semibold tracking-[0.24em] uppercase">
+          <p className="text-popover-foreground/60 text-[10px] font-semibold tracking-[0.24em] uppercase">
             Composer
           </p>
           <p className="text-popover-foreground/90 truncate pt-1 text-[15px]">
@@ -246,7 +246,7 @@ function ComposerInput({
         className={cn([
           "text-popover-foreground max-h-[88px] min-h-[34px] overflow-y-auto text-[15px] leading-6",
           "[&_.ProseMirror]:min-h-[34px] [&_.ProseMirror]:outline-none",
-          "[&_.ProseMirror]:placeholder:text-popover-foreground/28",
+          "[&_.ProseMirror]:placeholder:text-popover-foreground/45",
         ])}
         initialContent={initialContent}
         mentionConfig={mentionConfig}
@@ -288,7 +288,7 @@ function ComposerInput({
               disabled
                 ? "bg-popover-foreground/8 text-popover-foreground/25 cursor-default"
                 : [
-                    "bg-popover-foreground text-primary",
+                    "bg-primary text-primary-foreground",
                     "transition-transform hover:scale-[1.02]",
                   ],
               !hasContent && !disabled && "opacity-55",
