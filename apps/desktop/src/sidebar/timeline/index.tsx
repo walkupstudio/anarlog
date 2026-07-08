@@ -638,7 +638,7 @@ function SidebarUpcomingMeetingStatus({
       aria-live="polite"
       ariaLabel={`${title || t`Meeting`} ${label.toLowerCase()}`}
       data-sidebar-upcoming-meeting-status
-      className="border-destructive bg-destructive text-destructive-foreground w-28 justify-center shadow-md"
+      className="border-destructive bg-destructive text-destructive-foreground w-28 justify-center"
       icon={<ArrowUpIcon aria-hidden className="size-3" strokeWidth={2.4} />}
       onClick={onClick}
     >
