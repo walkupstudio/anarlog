@@ -111,3 +111,11 @@ conflict, since the fork only calls into them rather than modifying them.
 - **Full Xcode** (not just Command Line Tools): `crates/transcribe-soniqo` compiles Metal
   shaders with `xcrun metal`, which CLT does not provide. After installing Xcode:
   `sudo xcode-select -s /Applications/Xcode.app/Contents/Developer && sudo xcodebuild -license accept`
+
+## Phase B (design foundation)
+
+New fork-only files: `packages/ui/src/styles/recap-tokens.css` (palette; must stay the LAST @import in both globals.css files), `apps/desktop/src/styles/recap-fonts.css` + `apps/desktop/public/fonts/recap/` (bundled Space Grotesk/Inter/JetBrains Mono, OFL licenses), `apps/desktop/src/fork/wordmark.tsx`, `scripts/make-recap-icon.py`, `apps/desktop/src/fork/recap-tokens.test.ts`, `apps/desktop/src/fork/wordmark.test.tsx`.
+
+Modified upstream files: `packages/ui/src/styles/globals.css` (+1 import), `apps/desktop/src/styles/globals.css` (font tokens + 2 imports), `apps/desktop/src/shared/theme/apply.ts` + `apps/desktop/public/theme-boot.js` (dark default), `apps/desktop/src/onboarding/shared.tsx` (chapter prop), `apps/desktop/src/onboarding/index.tsx` (wordmark header, chapter numbers), `apps/desktop/src-tauri/icons/recap/*` (regenerated art), theme test files.
+
+Merge rule: token VALUES are fork-owned via recap-tokens.css — on upstream merge, take upstream's globals.css and re-append the recap-tokens import last; never rename tokens.
