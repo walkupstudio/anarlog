@@ -17,6 +17,7 @@ const SCROLL_DELAY_MS = 350;
 export type SectionStatus = "completed" | "active" | "upcoming";
 
 export function OnboardingSection({
+  chapter,
   title,
   completedTitle,
   description,
@@ -27,6 +28,7 @@ export function OnboardingSection({
   skippable = true,
   children,
 }: {
+  chapter?: string;
   title: ReactNode;
   completedTitle?: ReactNode;
   description?: ReactNode;
@@ -72,6 +74,11 @@ export function OnboardingSection({
         )}
         <div className="flex min-w-0 flex-col gap-3">
           <div className="flex items-center gap-2">
+            {chapter && (
+              <span className="text-muted-foreground mr-3 font-mono text-xs tracking-widest tabular-nums">
+                {chapter}&nbsp;/
+              </span>
+            )}
             <h2
               className={cn([
                 "transition-all duration-300",

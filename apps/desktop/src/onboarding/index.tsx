@@ -22,8 +22,9 @@ import { FolderLocationSection } from "./folder-location";
 import { PermissionsSection } from "./permissions";
 import { OnboardingSection } from "./shared";
 
-import { LOCAL_ONLY } from "~/fork/local-mode";
 import { useAuth } from "~/auth";
+import { LOCAL_ONLY } from "~/fork/local-mode";
+import { RecapWordmark } from "~/fork/wordmark";
 import { StandaloneWindowShell } from "~/shared/window-shell";
 import { type Tab, useTabs } from "~/store/zustand/tabs";
 
@@ -195,20 +196,21 @@ function OnboardingScreenContent({
           headerClassName,
         ])}
       >
-        <h1 className="font-hand text-foreground text-4xl leading-none font-semibold tracking-normal">
-          <Trans>Welcome to Recap</Trans>
+        <h1 className="font-display text-foreground text-4xl leading-none font-bold tracking-tight">
+          <Trans>Welcome to</Trans> <RecapWordmark />
         </h1>
       </div>
 
       <div className="scroll-fade-y relative z-10 flex-1 overflow-y-auto">
         <div className="flex flex-col gap-4 px-12 pb-16">
           <OnboardingSection
+            chapter="01"
             title={<Trans>Start with permissions</Trans>}
             completedTitle={<Trans>Permissions granted</Trans>}
             description={
               <Trans>
-                Recap needs access to your microphone and system audio to
-                record and transcribe your meetings
+                Recap needs access to your microphone and system audio to record
+                and transcribe your meetings
               </Trans>
             }
             status={getStepStatus("permissions", currentStep)}
@@ -255,6 +257,7 @@ function OnboardingScreenContent({
           )}
 
           <OnboardingSection
+            chapter="02"
             title={<Trans>Connect calendar</Trans>}
             description={
               <Trans>
@@ -273,6 +276,7 @@ function OnboardingScreenContent({
           </OnboardingSection>
 
           <OnboardingSection
+            chapter="03"
             title={<Trans>Storage</Trans>}
             description={
               <Trans>Where your notes and recordings are stored</Trans>
@@ -286,6 +290,7 @@ function OnboardingScreenContent({
           </OnboardingSection>
 
           <OnboardingSection
+            chapter="04"
             title={<Trans>Ready to go</Trans>}
             description={<FinalDescription />}
             status={getStepStatus("final", currentStep)}

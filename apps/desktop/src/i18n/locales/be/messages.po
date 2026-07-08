@@ -1905,12 +1905,16 @@ msgid "Week starts on"
 msgstr ""
 
 #: src/onboarding/index.tsx
+msgid "Welcome to"
+msgstr ""
+
+#: src/onboarding/index.tsx
 #~ msgid "Welcome to Anarlog"
 #~ msgstr ""
 
 #: src/onboarding/index.tsx
-msgid "Welcome to Recap"
-msgstr ""
+#~ msgid "Welcome to Recap"
+#~ msgstr ""
 
 #: src/changelog/index.tsx
 msgid "What's new in {version}?"
