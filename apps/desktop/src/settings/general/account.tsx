@@ -283,7 +283,7 @@ function PlanBillingSection({
           onClick={handleOpenBillingPortal}
           disabled={actionPending}
           className={cn([
-            "group border-border from-card to-background text-muted-foreground relative flex h-8 w-full items-center justify-center overflow-hidden rounded-full border bg-linear-to-b text-xs font-medium shadow-xs transition-all hover:scale-[102%] hover:shadow-md active:scale-[98%] disabled:opacity-50 disabled:hover:scale-100",
+            "group border-border from-card to-background text-muted-foreground relative flex h-8 w-full items-center justify-center overflow-hidden rounded-full border bg-linear-to-b text-xs font-medium transition-all hover:scale-[102%] active:scale-[98%] disabled:opacity-50 disabled:hover:scale-100",
           ])}
         >
           <span className="transition-opacity duration-150 group-hover:opacity-0">
@@ -345,8 +345,8 @@ function PlanBillingSection({
     const buttonClass = cn([
       "flex h-8 w-full cursor-pointer items-center justify-center rounded-full text-xs font-medium transition-all hover:scale-[102%] active:scale-[98%] disabled:opacity-50 disabled:hover:scale-100",
       isUpgrade
-        ? "bg-primary text-primary-foreground hover:bg-primary/90 shadow-md hover:shadow-lg"
-        : "border-border from-card to-background text-muted-foreground border bg-linear-to-b shadow-xs hover:shadow-md",
+        ? "bg-primary text-primary-foreground hover:bg-primary/90"
+        : "border-border from-card to-background text-muted-foreground border bg-linear-to-b",
     ]);
 
     return (
@@ -430,7 +430,7 @@ function GuestPlanSection({ onSignIn }: { onSignIn: () => Promise<void> }) {
       <button
         type="button"
         onClick={onSignIn}
-        className="bg-primary text-primary-foreground hover:bg-primary/90 flex h-8 w-full cursor-pointer items-center justify-center rounded-full text-xs font-medium shadow-md transition-all hover:scale-[102%] hover:shadow-lg active:scale-[98%]"
+        className="bg-primary text-primary-foreground hover:bg-primary/90 flex h-8 w-full cursor-pointer items-center justify-center rounded-full text-xs font-medium transition-all hover:scale-[102%] active:scale-[98%]"
       >
         {label}
       </button>

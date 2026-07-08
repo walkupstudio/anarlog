@@ -177,9 +177,10 @@ Composer eyebrow (`/38` → `/60`) and editor placeholder (`/28` → `/45`) opac
 ### Phase C/D backlog (from Phase B review)
 
 - RecordingIcon renders a red dot on the now-blue Listen button — needs a Phase D color decision (blue-on-blue prevents the naive C-2 rule).
-- Composer: 10px eyebrow at /38 (3.31:1) and editor placeholder at /28 (2.34:1) are sub-AA on the dark panel; revisit in the Phase D contrast sweep.
-- Composer send button is an off-white circle with blue arrow; consider `bg-primary` per "blue = primary actions" (Phase C call).
 
-- Dedupe committed font woff2 duplicates via variable-font weight-range descriptors.
 - Keep body-size `text-primary` text out of new screens (3.5:1 on card).
 - macOS icon-services cache can show a stale icon during dev (`rm -rf ~/Library/Caches/com.apple.iconservices*; killall Dock`).
+- canResume red hover preview + red ping resume dot in note-input header should become blue (resume starts a live state; red implies destruction) — final-review ruling, not yet applied.
+- Remaining app-wide shadow sweep (defined endpoint): chat/surface.ts (hardcoded #f4f4f5/#202020 + rgba shadows), billing trial dialogs (dark:bg-white + arbitrary shadows), onboarding/calendar glass shadows, packages/ui button.tsx default shadow-xs.
+- Streaming view (enhanced/streaming.tsx via Streamdown) renders headings without the chapters motif until the editor mounts — continuity polish.
+- Onboarding chapter-label recipe (font-mono text-xs tracking-widest, muted) drifts from the C3/D1 micro-label recipe and the editor's blue eyebrows — consolidate.

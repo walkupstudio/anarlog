@@ -45,7 +45,7 @@ export const CurrentTimeIndicator = forwardRef<
         <div className="relative flex h-5 items-center justify-center">
           <div
             data-sidebar-current-time-label
-            className="bg-primary border-primary text-primary-foreground rounded-full border px-2 py-0.5 font-mono text-[11px] font-semibold opacity-0 transition-opacity group-hover:opacity-100"
+            className="bg-primary border-primary text-primary-foreground rounded-full border px-2 py-0.5 font-mono text-[11px] font-medium opacity-0 transition-opacity group-hover:opacity-100"
           >
             {label}
           </div>

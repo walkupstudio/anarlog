@@ -54,7 +54,7 @@ function PermissionBlock({
         "group flex min-w-0 flex-1 basis-0 items-center gap-3 rounded-xl px-3 py-3 text-left transition-all",
         isAuthorized
           ? "border-border bg-card border"
-          : "border-primary bg-primary text-primary-foreground hover:bg-primary/90 border shadow-[0_4px_14px_rgba(87,83,78,0.18)] active:scale-[0.98]",
+          : "border-primary bg-primary text-primary-foreground hover:bg-primary/90 border active:scale-[0.98]",
         (isPending || isAuthorized) && "cursor-default",
         isPending && "opacity-50",
       ])}

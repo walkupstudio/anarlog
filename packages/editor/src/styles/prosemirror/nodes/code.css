@@ -1,7 +1,8 @@
 .prosemirror-editor {
   /* code block */
   pre {
-    background: hsl(var(--card));
+    background: hsl(var(--muted));
+    border: 1px solid hsl(var(--border));
     border-radius: 0.5rem;
     color: hsl(var(--foreground));
     font-family: var(--font-mono);
