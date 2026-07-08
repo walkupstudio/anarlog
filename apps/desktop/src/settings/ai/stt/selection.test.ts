@@ -1,6 +1,9 @@
 import { describe, expect, test } from "vitest";
 
-import { getPreferredProviderModel } from "./selection";
+import {
+  getPreferredProviderModel,
+  resolvePreferredModelToPersist,
+} from "./selection";
 
 describe("getPreferredProviderModel", () => {
   test("returns the remembered model when it is still available", () => {
@@ -100,5 +103,37 @@ describe("getPreferredProviderModel", () => {
         allowSavedModelWithoutChoices: true,
       }),
     ).toBe("whisper-large-v3");
+  });
+});
+
+describe("resolvePreferredModelToPersist", () => {
+  test("returns null when a model is already persisted", () => {
+    expect(
+      resolvePreferredModelToPersist(
+        "soniqo-parakeet-streaming",
+        "soniqo-parakeet-streaming",
+        [{ id: "soniqo-parakeet-streaming", isDownloaded: true }],
+      ),
+    ).toBeNull();
+  });
+
+  test("persists the displayed model when nothing is persisted and it is downloaded", () => {
+    expect(
+      resolvePreferredModelToPersist(undefined, "soniqo-parakeet-streaming", [
+        { id: "soniqo-parakeet-streaming", isDownloaded: true },
+      ]),
+    ).toBe("soniqo-parakeet-streaming");
+  });
+
+  test("returns null when the displayed model is not downloaded", () => {
+    expect(
+      resolvePreferredModelToPersist(undefined, "soniqo-parakeet-streaming", [
+        { id: "soniqo-parakeet-streaming", isDownloaded: false },
+      ]),
+    ).toBeNull();
+  });
+
+  test("returns null when nothing is displayed", () => {
+    expect(resolvePreferredModelToPersist(undefined, undefined, [])).toBeNull();
   });
 });

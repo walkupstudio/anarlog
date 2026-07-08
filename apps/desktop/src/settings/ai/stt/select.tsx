@@ -8,7 +8,7 @@ import {
   Loader2,
   Trash2,
 } from "lucide-react";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 import {
   commands as localSttCommands,
@@ -34,7 +34,10 @@ import { cn } from "@hypr/utils";
 import { useSttSettings } from "./context";
 import { HealthStatusIndicator, useConnectionHealth } from "./health";
 import { LocalModelBackendBadge, LocalModelLabel } from "./model-icon";
-import { getPreferredProviderModel } from "./selection";
+import {
+  getPreferredProviderModel,
+  resolvePreferredModelToPersist,
+} from "./selection";
 import {
   displayModelLabel,
   displayModelTitle,
@@ -128,6 +131,17 @@ export function SelectProviderAndModel() {
 
     lastSelectedModelsRef.current[provider] = model;
   };
+
+  const preferredModelToPersist = resolvePreferredModelToPersist(
+    selectedSttModel,
+    displayedSttModel,
+    selectedModels,
+  );
+  useEffect(() => {
+    if (preferredModelToPersist && current_stt_provider) {
+      handleSelectModel(preferredModelToPersist);
+    }
+  }, [preferredModelToPersist, current_stt_provider, handleSelectModel]);
 
   const handleProviderChange = (provider: string) => {
     rememberModel(current_stt_provider, selectedSttModel);

@@ -178,6 +178,10 @@ Composer eyebrow (`/38` → `/60`) and editor placeholder (`/28` → `/45`) opac
 
 `apps/desktop/src/main.tsx` (React Scan render-overlay no longer loads in dev when LOCAL_ONLY) and `apps/desktop/src/main/body.tsx` (devtools panel button short-circuited; `showDevtool` never queried). `main/body.test.tsx` devtools tests rewritten to the LOCAL_ONLY expectation. To debug the fork, temporarily flip `LOCAL_ONLY` in `apps/desktop/src/fork/local-mode.ts`.
 
+### Fix: STT model selection never persisted
+
+`apps/desktop/src/settings/ai/stt/selection.ts` + `select.tsx`: the model Select displayed a *preferred* model (`getPreferredProviderModel`) while `current_stt_model` stayed empty; Radix treats clicking the displayed item as a no-op re-selection, so the setting could never be written and the "Transcription model is needed" banner persisted. New `resolvePreferredModelToPersist` helper + reconciliation effect persist the displayed model once it is downloaded. Latent upstream bug; surfaced by the fork's fresh local-only first-run (upstream installs configure the model during onboarding/cloud flows).
+
 ### Phase C/D backlog (from Phase B review)
 
 
