@@ -851,8 +851,8 @@ describe("Header", () => {
     expect(screen.getByTestId("dancing-sticks")).not.toBeNull();
     expect(transcriptTab.className).toContain("text-muted-foreground/70");
     expect(transcriptTab.className).toContain("hover:bg-background/60");
+    expect(transcriptTab.className).not.toContain("bg-primary/10");
     expect(transcriptTab.className).not.toContain("bg-red-50");
-    expect(transcriptTab.className).not.toContain("dark:bg-red-950/50");
     expect(transcriptTab.getAttribute("title")).toBeNull();
 
     fireEvent.click(transcriptTab);
@@ -883,7 +883,9 @@ describe("Header", () => {
     const transcriptTab = screen.getByRole("button", { name: "Transcript" });
 
     expect(screen.getByTestId("dancing-sticks")).not.toBeNull();
-    expect(transcriptTab.className).toContain("bg-red-50");
+    expect(transcriptTab.className).toContain("bg-primary/10");
+    expect(transcriptTab.className).toContain("text-primary");
+    expect(transcriptTab.className).not.toContain("bg-red-50");
     expect(transcriptTab.getAttribute("title")).toBe("Stop listening");
     expect(transcriptTab.getAttribute("data-hover-label")).toBe("Stop");
 

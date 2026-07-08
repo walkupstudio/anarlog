@@ -136,6 +136,8 @@ Modified upstream files: `apps/desktop/src/session/components/note-input/header.
 
 `DancingSticks` note: `sidebar/timeline/item.tsx` already passed `color="currentColor"` under a `text-white/80` button (out of scope for C-2, untouched). With `header.tsx` and `batch.tsx` now doing the same, all known call sites agree, so the component default was updated too.
 
+Review fix (same task): the active-live pill branches in `header.tsx` (`bg-amber-50 text-amber-500 ...` degraded, `bg-red-50 text-red-500 ...` normal-live, plus their dark variants) → `bg-primary/10 text-primary hover:bg-primary/15`, with the degraded branch dimming to `text-primary/60` (color was its only cue; still color-only — a structural degraded affordance would be a behavioral change). The enhanced tab's `isError` red branch is a genuine error state and stays red. The `canResume` red hover preview + red ping resume dot were not adjudicated; left for Phase D.
+
 ### Phase C/D backlog (from Phase B review)
 
 - Composer: 10px eyebrow at /38 (3.31:1) and editor placeholder at /28 (2.34:1) are sub-AA on the dark panel; revisit in the Phase D contrast sweep.

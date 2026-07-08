@@ -731,14 +731,8 @@ function HeaderViewTranscriptButton({
               isActive ? "w-[98px] min-w-[98px] gap-1.5 pr-1.5 pl-2" : null,
               isActive
                 ? live.degraded
-                  ? [
-                      "bg-amber-50 text-amber-500 hover:bg-amber-100 hover:text-amber-600",
-                      "dark:bg-amber-950/50 dark:text-amber-300 dark:hover:bg-amber-950 dark:hover:text-amber-200",
-                    ]
-                  : [
-                      "bg-red-50 text-red-500 hover:bg-red-100 hover:text-red-600",
-                      "dark:bg-red-950/50 dark:text-red-300 dark:hover:bg-red-950 dark:hover:text-red-200",
-                    ]
+                  ? "bg-primary/10 text-primary/60 hover:bg-primary/15"
+                  : "bg-primary/10 text-primary hover:bg-primary/15"
                 : null,
             ]
           : null,
