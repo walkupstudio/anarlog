@@ -120,7 +120,7 @@ export function SettingsAccount() {
               <button
                 type="button"
                 onClick={handleSignIn}
-                className="border-primary bg-primary text-primary-foreground hover:bg-primary/90 h-10 w-fit rounded-full border-2 px-6 text-sm font-medium shadow-[0_4px_14px_rgba(87,83,78,0.4)] transition-all duration-200"
+                className="border-primary bg-primary text-primary-foreground hover:bg-primary/90 h-10 w-fit rounded-full border-2 px-6 text-sm font-medium transition-all duration-200"
               >
                 <Trans>Get started</Trans>
               </button>

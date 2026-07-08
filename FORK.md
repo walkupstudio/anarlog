@@ -164,6 +164,12 @@ Test file updated: `apps/desktop/src/main/update-banner.test.tsx` (assertion cha
 
 New fork-only file: `apps/desktop/src/settings/section-label.tsx` (`SettingsSectionLabel` — mono micro-label h2: `font-mono text-[11px] font-medium tracking-[0.08em] uppercase text-muted-foreground`, matching the timeline/onboarding chapters voice). Modified upstream files (secondary `text-lg font-semibold` h2 → `SettingsSectionLabel`, wrapper margins adjusted mb-2/mb-4 → mb-3 where needed): `apps/desktop/src/settings/personalization/index.tsx`, `settings/general/account.tsx` (×2), `settings/general/index.tsx`, `settings/general/storage/index.tsx`, `settings/general/app-settings.tsx`. `SettingsPageTitle` untouched.
 
+### Task D2: primitive cleanup + shadow sweep
+
+Modified ui package files: `packages/ui/src/components/ui/dialog.tsx` (`DialogContent` arbitrary `bg-[hsl(var(--background,0_0%_100%))]` → `bg-background` token; overlay scrim `bg-black/80` preserved — scrims are exempt), `packages/ui/src/components/ui/card.tsx` (`CardDescription` `text-neutral-500` → `text-muted-foreground`), `packages/ui/src/components/ui/toast.tsx` (deleted dead `CustomToast` component + `CustomToastProps` interface; `toast()` function rewritten inline; zero external call sites verified).
+
+Modified desktop files: `apps/desktop/src/settings/general/account.tsx` (removed stone-tinted button shadow `shadow-[0_4px_14px_rgba(87,83,78,0.4)]`), `apps/desktop/src/calendar/components/sidebar.tsx` (removed stone-tinted button shadow `shadow-[0_4px_14px_rgba(87,83,78,0.18)]`). Both buttons retain their `border-2 border-primary` borders for separation.
+
 ### Phase C/D backlog (from Phase B review)
 
 - RecordingIcon renders a red dot on the now-blue Listen button — needs a Phase D color decision (blue-on-blue prevents the naive C-2 rule).
@@ -172,5 +178,4 @@ New fork-only file: `apps/desktop/src/settings/section-label.tsx` (`SettingsSect
 
 - Dedupe committed font woff2 duplicates via variable-font weight-range descriptors.
 - Keep body-size `text-primary` text out of new screens (3.5:1 on card).
-- Stone-tinted drop shadows in `settings/general/account.tsx` + `calendar/components/sidebar.tsx` violate the no-shadow rule (Phase D sweep).
 - macOS icon-services cache can show a stale icon during dev (`rm -rf ~/Library/Caches/com.apple.iconservices*; killall Dock`).
