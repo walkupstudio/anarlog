@@ -29,7 +29,7 @@ describe("CurrentTimeIndicator", () => {
     );
   });
 
-  test("uses red current-time colors in light and dark mode", () => {
+  test("uses primary-blue current-time colors", () => {
     vi.useFakeTimers();
     vi.setSystemTime(new Date(2024, 0, 15, 12, 0, 0));
 
@@ -37,13 +37,11 @@ describe("CurrentTimeIndicator", () => {
     const line = container.querySelector("[data-sidebar-current-time-line]");
     const label = container.querySelector("[data-sidebar-current-time-label]");
 
-    expect(line?.className).toContain("bg-red-500/85");
-    expect(line?.className).toContain("dark:bg-red-400/70");
-    expect(label?.className).toContain("border-red-500");
-    expect(label?.className).toContain("bg-red-500");
-    expect(label?.className).toContain("text-destructive-foreground");
-    expect(label?.className).toContain("dark:border-red-500");
-    expect(label?.className).toContain("dark:bg-red-500");
+    expect(line?.className).toContain("bg-primary/85");
+    expect(label?.className).toContain("border-primary");
+    expect(label?.className).toContain("bg-primary");
+    expect(label?.className).toContain("text-primary-foreground");
+    expect(label?.className).not.toContain("bg-red-500");
     expect(label?.className).not.toContain("text-white");
     expect(label?.className).not.toContain("shadow-xs");
   });

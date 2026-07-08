@@ -212,9 +212,7 @@ const ItemBase = memo(function ItemBase({
               <div
                 className={cn([
                   "font-mono text-xs",
-                  isLive
-                    ? "text-destructive-foreground/65"
-                    : "text-muted-foreground",
+                  isLive ? "text-primary/75" : "text-muted-foreground",
                 ])}
               >
                 {displayTime}
