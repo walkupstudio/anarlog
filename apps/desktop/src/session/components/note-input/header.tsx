@@ -153,8 +153,8 @@ function iconHeaderViewClassName(
     "group/header-view flex shrink-0 items-center justify-center rounded-full transition-colors select-none [&>svg]:shrink-0",
     isActive
       ? [
-          "text-foreground bg-white shadow-xs",
-          "dark:bg-accent dark:text-foreground dark:shadow-none",
+          "text-foreground bg-card border-border border",
+          "dark:bg-accent dark:text-foreground",
         ]
       : [
           "text-muted-foreground/70",
@@ -294,7 +294,7 @@ function HeaderViewRawButton({
       onClick={onClick}
       onContextMenu={onContextMenu}
       size={standalone ? "standalone" : "tray"}
-      className={standalone ? "border-border/70 border shadow-xs" : undefined}
+      className={standalone ? "border-border/70 border" : undefined}
     />
   );
 }
@@ -580,8 +580,8 @@ function HeaderViewEnhancedActive({
                 "dark:text-red-400 dark:hover:bg-red-950/50 dark:hover:text-red-300 dark:focus-visible:bg-red-950/50",
               ]
             : [
-                "focus-visible:text-foreground focus-visible:bg-white",
-                "dark:focus-visible:text-primary dark:focus-visible:bg-white",
+                "focus-visible:text-foreground focus-visible:bg-card",
+                "dark:focus-visible:text-primary dark:focus-visible:bg-card",
               ],
         ]),
       )}
@@ -765,17 +765,15 @@ function HeaderViewTranscriptLiveIcon({
     muted: boolean;
   };
 }) {
-  const color = live.degraded ? "#f59e0b" : "#ef4444";
-
   return (
-    <span className="relative flex size-4 items-center justify-center">
+    <span className="text-primary relative flex size-4 items-center justify-center">
       <span className={canStop ? "group-hover/transcript-live:hidden" : ""}>
         {live.muted ? (
           <AudioLinesIcon className="size-4" />
         ) : (
           <DancingSticks
             amplitude={live.amplitude}
-            color={color}
+            color="currentColor"
             height={16}
             width={16}
           />

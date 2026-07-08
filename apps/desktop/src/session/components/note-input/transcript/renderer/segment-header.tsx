@@ -22,7 +22,7 @@ export function SegmentHeader({
   const colorVars = useSegmentColorVars(segment.key);
   const label = useSpeakerLabel(segment.key, speakerLabelManager);
   const headerClassName = cn([
-    "bg-card sticky top-0 z-20",
+    "bg-card border-border sticky top-0 z-20 border-b",
     "-mx-3 px-3 py-1",
     "text-xs font-light",
     "flex items-center gap-3",
@@ -37,6 +37,7 @@ export function SegmentHeader({
         transcriptId={transcriptId}
         color="var(--segment-color)"
         label={label}
+        className="font-mono tracking-wide"
       />
     </div>
   );

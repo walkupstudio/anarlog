@@ -16,10 +16,10 @@ export function BatchState({
     "Recording continues and audio will be saved when you stop.";
 
   return (
-    <div className="flex h-full flex-col items-center justify-center gap-8">
+    <div className="text-muted-foreground flex h-full flex-col items-center justify-center gap-8">
       <DancingSticks
         amplitude={Math.min(Math.hypot(amplitude.mic, amplitude.speaker), 1)}
-        color="#a3a3a3"
+        color="currentColor"
         height={56}
         width={120}
         stickWidth={3.5}

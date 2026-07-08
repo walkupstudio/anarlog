@@ -384,12 +384,12 @@ describe("Header", () => {
     expect(memoTab.textContent).toBe("Memos");
     expect(memoTab.className).toContain("h-[26px]");
     expect(memoTab.className).not.toContain("-my-px");
-    expect(memoTab.className).toContain("bg-white");
+    expect(memoTab.className).toContain("bg-card");
+    expect(memoTab.className).toContain("border-border");
     expect(memoTab.className).toContain("text-foreground");
-    expect(memoTab.className).toContain("shadow-xs");
+    expect(memoTab.className).not.toContain("shadow-xs");
     expect(memoTab.className).toContain("dark:text-foreground");
     expect(memoTab.className).toContain("dark:bg-accent");
-    expect(memoTab.className).toContain("dark:shadow-none");
     expect(summaryTab.className).toContain("h-[26px]");
     expect(summaryTab.className).toContain("dark:hover:bg-accent/80");
     expect(summaryTab.querySelector("svg")).not.toBeNull();
@@ -470,8 +470,9 @@ describe("Header", () => {
     expect(viewSwitcher.className).not.toContain("rounded-full");
     expect(memoTab.textContent).toBe("Memos");
     expect(memoTab.className).toContain("h-7");
-    expect(memoTab.className).toContain("bg-white");
+    expect(memoTab.className).toContain("bg-card");
     expect(memoTab.className).toContain("border");
+    expect(memoTab.className).not.toContain("shadow-xs");
     expect(memoTab.className).not.toContain("bg-foreground/10");
   });
 
